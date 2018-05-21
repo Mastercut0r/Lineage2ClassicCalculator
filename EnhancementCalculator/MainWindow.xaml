@@ -1,0 +1,29 @@
+﻿<Window x:Class="EnhancementCalculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EnhancementCalculator"
+        mc:Ignorable="d"
+        Title="Lineage 2 Classic Calculator v0.9" MinHeight="225" MinWidth="700" Height="515"  Width="700">
+    <TabControl>
+        <TabItem Header="Weapon Enhancements Calculator">
+            <DockPanel VerticalAlignment="Top">
+                <local:ItemEnhancer DockPanel.Dock="Top"/>
+                <Separator DockPanel.Dock="Top" Margin="5"/>
+                <local:ItemEnhancer DockPanel.Dock="Top"/>
+                <Separator DockPanel.Dock="Top" Margin="5"/>
+                <local:ItemEnhancer DockPanel.Dock="Top"/>
+                <Separator DockPanel.Dock="Top" Margin="5"/>
+                <local:ItemEnhancer DockPanel.Dock="Top"/>
+                <Separator DockPanel.Dock="Top" Margin="5"/>
+                <local:ItemEnhancer DockPanel.Dock="Top"/>
+                <Separator DockPanel.Dock="Top" Margin="5"/>
+                <local:ItemEnhancer DockPanel.Dock="Top"/>
+            </DockPanel>
+        </TabItem>
+        <TabItem Header="Instance Experience Calculator">
+            <local:InstanceExpCalculator Margin="5"/>
+        </TabItem>
+    </TabControl>
+</Window>
