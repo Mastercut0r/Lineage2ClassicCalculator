@@ -53,6 +53,6 @@ namespace EnhancementCalculator.Constants
         //};
         public static int tenKkExpScrollPrice = 100000;
         public static int fiftyKkExpScrollPrice = 400000;
-        public static int hundertKkExpScrollPrice = 750000;
+        public static int hundertKkExpScrollPrice = 500000;
     }
 }

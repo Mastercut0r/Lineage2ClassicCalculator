@@ -16,29 +16,48 @@ namespace EnhancementCalculator.Constants
         };
         public static IReadOnlyDictionary<string, (int patack, int matack)> TwohandedBlunts = new Dictionary<string, (int patack, int matack)>()
         {
+            {Resource.DemonStaff, WeaponBaseStats.DemonStaff},
+            {Resource.StaffOfEvilSpirit, WeaponBaseStats.StaffOfEvilSpirit},
             {Resource.GnomeHammer, WeaponBaseStats.GnomeHammer},
+            {Resource.DesparionStaff, WeaponBaseStats.DesparionStaff},
+            {Resource.BranchOfMotherTree, WeaponBaseStats.BranchOfMotherTree},
+            {Resource.DaemonCrystall, WeaponBaseStats.DaemonCrystall},
             {Resource.IceStormHammer, WeaponBaseStats.IceStormHammer},
             {Resource.StarOfPain, WeaponBaseStats.StarOfPain},
             {Resource.DoomCrusher, WeaponBaseStats.DoomCrusher},
-            {Resource.BeastTrident, WeaponBaseStats.BeastTrident},
+            {Resource.BeastTrident, WeaponBaseStats.BeastTrident}
         };
         public static IReadOnlyDictionary<string, (int patack, int matack)> OnehandedSwords = new Dictionary<string, (int patack, int matack)>()
         {
+            {Resource.MysticalSword, WeaponBaseStats.MysticalSword},
+            {Resource.Homuncul, WeaponBaseStats.Homuncul},
             {Resource.Katana, WeaponBaseStats.Katana},
+            {Resource.EclipseSword, WeaponBaseStats.EclipseSword},
+            {Resource.SwordOfValhalla, WeaponBaseStats.SwordOfValhalla},
+            {Resource.WizardsTears, WeaponBaseStats.WizardsTears},
             {Resource.SLS, WeaponBaseStats.SLS},
+            {Resource.ElementalSword, WeaponBaseStats.ElementalSword},
+            {Resource.SwordOfMiracles, WeaponBaseStats.SwordOfMiracles},
             {Resource.Damaskus, WeaponBaseStats.Damaskus},
+            {Resource.TemisTongue, WeaponBaseStats.TemisTongue},
             {Resource.DarkLegionsEdge, WeaponBaseStats.DarkLegionsEdge},
-            {Resource.SirrasBlade, WeaponBaseStats.SirrasBlade},
+            {Resource.SirrasBlade, WeaponBaseStats.SirrasBlade}
         };
         public static IReadOnlyDictionary<string, (int patack, int matack)> OnehandedBlunts = new Dictionary<string, (int patack, int matack)>()
         {
+            {Resource.EclipseAxe, WeaponBaseStats.EclipseAxe},
+            {Resource.SpellBreaker, WeaponBaseStats.SpellBreaker},
+            {Resource.KaimVanul, WeaponBaseStats.KaimVanul},
             {Resource.Yaksa, WeaponBaseStats.Yaksa},
+            {Resource.BurningDragonSkull, WeaponBaseStats.BurningDragonSkull},
             {Resource.DeadmensGlory, WeaponBaseStats.DeadmensGlory},
+            {Resource.CabriosHand, WeaponBaseStats.CabriosHand},
             {Resource.Elysium, WeaponBaseStats.Elysium},
-            {Resource.BarakielAxe, WeaponBaseStats.BarakielsAxe},
+            {Resource.BarakielAxe, WeaponBaseStats.BarakielsAxe}
         };
         public static IReadOnlyDictionary<string, (int patack, int matack)> Daggers = new Dictionary<string, (int patack, int matack)>()
         {
+            {Resource.HellKnife, WeaponBaseStats.HellKnife},
             {Resource.CrystalDagger, WeaponBaseStats.CrystalDagger},
             {Resource.DemonDagger, WeaponBaseStats.DemonDagger},
             {Resource.SoulSeparator, WeaponBaseStats.SoulSeparator},
@@ -66,6 +85,14 @@ namespace EnhancementCalculator.Constants
             {Resource.DualDamaskus, WeaponBaseStats.DualDamaskus},
             {Resource.DualTallumDamaskus, WeaponBaseStats.DualTallumDamaskus},
         };
+        public static IReadOnlyDictionary<string, (int patack, int matack)> Polearms = new Dictionary<string, (int patack, int matack)>()
+        {
+            {Resource.OrcPolearm, WeaponBaseStats.OrcPolearm},
+            {Resource.Pike, WeaponBaseStats.Pike},
+            {Resource.Halberd, WeaponBaseStats.Halberd},
+            {Resource.TallumGlave, WeaponBaseStats.TallumGlave},
+            {Resource.TyphonPike, WeaponBaseStats.TyphonPike}
+        };
 
         public static IReadOnlyDictionary<string, (int patack, int matack)> GetWeaponTable(WeaponType type)
         {
@@ -87,6 +114,8 @@ namespace EnhancementCalculator.Constants
                     return Fists;
                 case WeaponType.DualSwords:
                     return DualSwords;
+                case WeaponType.Polearms:
+                    return Polearms;
                 default:
                     return null;
             }

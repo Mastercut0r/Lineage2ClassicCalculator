@@ -89,7 +89,7 @@ namespace EnhancementCalculator
             StringBuilder scrollPrices = new StringBuilder();
             string delimeter = ", ";
             if (result.HundertKkScrollNeeded > 0)
-                scrollPrices.Append($"{result.HundertKkScrollNeeded} scrolls x 750k = [{string.Format("{0,9:N0}", result.HundertKkScrollNeeded * ExpScrollPrices.hundertKkExpScrollPrice)} Adena]");
+                scrollPrices.Append($"{result.HundertKkScrollNeeded} scrolls x 500k = [{string.Format("{0,9:N0}", result.HundertKkScrollNeeded * ExpScrollPrices.hundertKkExpScrollPrice)} Aden]");
             if (result.FiftyKkScrollNeeded > 0)
             {
                 if (scrollPrices.Length > 0)
@@ -97,7 +97,7 @@ namespace EnhancementCalculator
                     scrollPrices.Append(delimeter);
                     scrollPrices.Append(Environment.NewLine);
                 }
-                scrollPrices.Append($"{result.FiftyKkScrollNeeded} scrolls x 400k = [{string.Format("{0,9:N0}", result.FiftyKkScrollNeeded * ExpScrollPrices.fiftyKkExpScrollPrice)} Adena]");
+                scrollPrices.Append($"{result.FiftyKkScrollNeeded} scrolls x 400k = [{string.Format("{0,9:N0}", result.FiftyKkScrollNeeded * ExpScrollPrices.fiftyKkExpScrollPrice)} Aden]");
             }
             if (result.TenKkScrollNeeded > 0)
             {
@@ -106,7 +106,7 @@ namespace EnhancementCalculator
                     scrollPrices.Append(delimeter);
                     scrollPrices.Append(Environment.NewLine);
                 }
-                scrollPrices.Append($"{result.TenKkScrollNeeded} scrolls x 100k = [{string.Format("{0,9:N0}", result.TenKkScrollNeeded * ExpScrollPrices.tenKkExpScrollPrice)} Adena]");
+                scrollPrices.Append($"{result.TenKkScrollNeeded} scrolls x 100k = [{string.Format("{0,9:N0}", result.TenKkScrollNeeded * ExpScrollPrices.tenKkExpScrollPrice)} Aden]");
             }
             lblMoneyNeeded.Content = scrollPrices.ToString();
         }
@@ -115,7 +115,7 @@ namespace EnhancementCalculator
             lblExpNeeded.Content = string.Format("{0,9:N0}", result?.TotalExperience);
             lblWeeksNeeded.Content = string.Format("{0,2:N0}", result?.WeeklyCyclesNeeded);
             lblRemainingExp.Content = string.Format("{0,9:N0}", result?.RemainingExperience);
-            lblMoneyTotal.Content = $"{string.Format("{0,9:N0}", result?.MoneyTotal)} Adena";
+            lblMoneyTotal.Content = $"{string.Format("{0,9:N0}", result?.MoneyTotal)} Aden";
         }
 
         private void btCalculate_Click(object sender, RoutedEventArgs e)

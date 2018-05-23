@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Reflection;
+using System.Windows;
 
 namespace EnhancementCalculator
 {
@@ -10,6 +11,7 @@ namespace EnhancementCalculator
         public MainWindow()
         {
             InitializeComponent();
+            this.Title = $"Lineage 2 Classic Calculator v{Assembly.GetExecutingAssembly().GetName().Version.ToString()}";
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EnhancementCalculator"
         mc:Ignorable="d"
-        Title="Lineage 2 Classic Calculator v0.9" MinHeight="225" MinWidth="700" Height="515"  Width="700">
+        MinHeight="225" MinWidth="700" Height="515"  Width="700">
     <TabControl>
         <TabItem Header="Weapon Enhancements Calculator">
             <DockPanel VerticalAlignment="Top">

@@ -237,4 +237,70 @@
   <data name="SoulBow" xml:space="preserve">
     <value>Пронзатель Душ</value>
   </data>
+  <data name="BranchOfMotherTree" xml:space="preserve">
+    <value>Ветвь Древа Жизни</value>
+  </data>
+  <data name="BurningDragonSkull" xml:space="preserve">
+    <value>Пылающий Череп Дракона</value>
+  </data>
+  <data name="DaemonCrystall" xml:space="preserve">
+    <value>Кристалл Дэймона</value>
+  </data>
+  <data name="DemonStaff" xml:space="preserve">
+    <value>Посох Демона</value>
+  </data>
+  <data name="DesparionStaff" xml:space="preserve">
+    <value>Посох Даспариона</value>
+  </data>
+  <data name="EclipseSword" xml:space="preserve">
+    <value>Меч Затмения</value>
+  </data>
+  <data name="Halberd" xml:space="preserve">
+    <value>Алебарда</value>
+  </data>
+  <data name="HellKnife" xml:space="preserve">
+    <value>Нож Ада</value>
+  </data>
+  <data name="Homuncul" xml:space="preserve">
+    <value>Меч Гомункула</value>
+  </data>
+  <data name="KaimVanul" xml:space="preserve">
+    <value>Кости Каим Ванула</value>
+  </data>
+  <data name="OrcPolearm" xml:space="preserve">
+    <value>Секира Орков</value>
+  </data>
+  <data name="Pike" xml:space="preserve">
+    <value>Пика</value>
+  </data>
+  <data name="StaffOfEvilSpirit" xml:space="preserve">
+    <value>Посох Злых Духов</value>
+  </data>
+  <data name="SwordOfMiracles" xml:space="preserve">
+    <value>Легендарный Меч</value>
+  </data>
+  <data name="SwordOfValhalla" xml:space="preserve">
+    <value>Меч Вальхаллы</value>
+  </data>
+  <data name="TallumGlave" xml:space="preserve">
+    <value>Глефа Таллума</value>
+  </data>
+  <data name="TemisTongue" xml:space="preserve">
+    <value>Язык Темис</value>
+  </data>
+  <data name="TyphonPike" xml:space="preserve">
+    <value>Копье Тифона</value>
+  </data>
+  <data name="WizardsTears" xml:space="preserve">
+    <value>Слезы Чародея</value>
+  </data>
+  <data name="CabriosHand" xml:space="preserve">
+    <value>Рука Кабрио</value>
+  </data>
+  <data name="ElementalSword" xml:space="preserve">
+    <value>Меч Стихий</value>
+  </data>
+  <data name="SpellBreaker" xml:space="preserve">
+    <value>Рассеиватель Заклинаний</value>
+  </data>
 </root>

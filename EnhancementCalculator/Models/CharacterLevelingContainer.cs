@@ -147,7 +147,7 @@ namespace EnhancementCalculator.Models
                     HundertKkScrollNeeded += (InstanceExpPerLevelTable.BaiumExpPerLevelTable[CurrentLevel] == 100000000) ? 1 : 2;
                     break;
                 case InstanceTypes.Antharas:
-                    HundertKkScrollNeeded += (InstanceExpPerLevelTable.AntharasExpPerLevelTable[CurrentLevel] == 100000000) ? 1 : 2;
+                    HundertKkScrollNeeded += (InstanceExpPerLevelTable.AntharasExpPerLevelTable[CurrentLevel] == 100000000) ? 1 : 3;
                     break;
                 default:
                     break;

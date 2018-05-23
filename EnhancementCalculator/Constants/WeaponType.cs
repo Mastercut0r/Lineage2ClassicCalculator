@@ -8,7 +8,7 @@
         Bows,
         OnehandedBlunts,
         TwohandedBlunts,
-        //Polearms,
+        Polearms,
         Fists,
         DualSwords
     }

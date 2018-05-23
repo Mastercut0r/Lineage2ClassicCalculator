@@ -106,6 +106,33 @@ namespace EnhancementCalculator {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ветвь Древа Жизни.
+        /// </summary>
+        internal static string BranchOfMotherTree {
+            get {
+                return ResourceManager.GetString("BranchOfMotherTree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пылающий Череп Дракона.
+        /// </summary>
+        internal static string BurningDragonSkull {
+            get {
+                return ResourceManager.GetString("BurningDragonSkull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Рука Кабрио.
+        /// </summary>
+        internal static string CabriosHand {
+            get {
+                return ResourceManager.GetString("CabriosHand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Кровавый Лук.
         /// </summary>
         internal static string CarnageBow {
@@ -120,6 +147,15 @@ namespace EnhancementCalculator {
         internal static string CrystalDagger {
             get {
                 return ResourceManager.GetString("CrystalDagger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Кристалл Дэймона.
+        /// </summary>
+        internal static string DaemonCrystall {
+            get {
+                return ResourceManager.GetString("DaemonCrystall", resourceCulture);
             }
         }
         
@@ -156,6 +192,24 @@ namespace EnhancementCalculator {
         internal static string DemonDagger {
             get {
                 return ResourceManager.GetString("DemonDagger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Посох Демона.
+        /// </summary>
+        internal static string DemonStaff {
+            get {
+                return ResourceManager.GetString("DemonStaff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Посох Даспариона.
+        /// </summary>
+        internal static string DesparionStaff {
+            get {
+                return ResourceManager.GetString("DesparionStaff", resourceCulture);
             }
         }
         
@@ -232,6 +286,24 @@ namespace EnhancementCalculator {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Меч Затмения.
+        /// </summary>
+        internal static string EclipseSword {
+            get {
+                return ResourceManager.GetString("EclipseSword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Меч Стихий.
+        /// </summary>
+        internal static string ElementalSword {
+            get {
+                return ResourceManager.GetString("ElementalSword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Элизиум.
         /// </summary>
         internal static string Elysium {
@@ -286,6 +358,33 @@ namespace EnhancementCalculator {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Алебарда.
+        /// </summary>
+        internal static string Halberd {
+            get {
+                return ResourceManager.GetString("Halberd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Нож Ада.
+        /// </summary>
+        internal static string HellKnife {
+            get {
+                return ResourceManager.GetString("HellKnife", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Меч Гомункула.
+        /// </summary>
+        internal static string Homuncul {
+            get {
+                return ResourceManager.GetString("Homuncul", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Молот Ледяной Бури.
         /// </summary>
         internal static string IceStormHammer {
@@ -300,6 +399,15 @@ namespace EnhancementCalculator {
         internal static string IposSword {
             get {
                 return ResourceManager.GetString("IposSword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Кости Каим Ванула.
+        /// </summary>
+        internal static string KaimVanul {
+            get {
+                return ResourceManager.GetString("KaimVanul", resourceCulture);
             }
         }
         
@@ -331,11 +439,29 @@ namespace EnhancementCalculator {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Секира Орков.
+        /// </summary>
+        internal static string OrcPolearm {
+            get {
+                return ResourceManager.GetString("OrcPolearm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Меч Паагрио.
         /// </summary>
         internal static string PaagrioSword {
             get {
                 return ResourceManager.GetString("PaagrioSword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пика.
+        /// </summary>
+        internal static string Pike {
+            get {
+                return ResourceManager.GetString("Pike", resourceCulture);
             }
         }
         
@@ -394,6 +520,24 @@ namespace EnhancementCalculator {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Рассеиватель Заклинаний.
+        /// </summary>
+        internal static string SpellBreaker {
+            get {
+                return ResourceManager.GetString("SpellBreaker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Посох Злых Духов.
+        /// </summary>
+        internal static string StaffOfEvilSpirit {
+            get {
+                return ResourceManager.GetString("StaffOfEvilSpirit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Звезда Боли.
         /// </summary>
         internal static string StarOfPain {
@@ -408,6 +552,60 @@ namespace EnhancementCalculator {
         internal static string StormNaga {
             get {
                 return ResourceManager.GetString("StormNaga", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Легендарный Меч.
+        /// </summary>
+        internal static string SwordOfMiracles {
+            get {
+                return ResourceManager.GetString("SwordOfMiracles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Меч Вальхаллы.
+        /// </summary>
+        internal static string SwordOfValhalla {
+            get {
+                return ResourceManager.GetString("SwordOfValhalla", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Глефа Таллума.
+        /// </summary>
+        internal static string TallumGlave {
+            get {
+                return ResourceManager.GetString("TallumGlave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Язык Темис.
+        /// </summary>
+        internal static string TemisTongue {
+            get {
+                return ResourceManager.GetString("TemisTongue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Копье Тифона.
+        /// </summary>
+        internal static string TyphonPike {
+            get {
+                return ResourceManager.GetString("TyphonPike", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Слезы Чародея.
+        /// </summary>
+        internal static string WizardsTears {
+            get {
+                return ResourceManager.GetString("WizardsTears", resourceCulture);
             }
         }
         

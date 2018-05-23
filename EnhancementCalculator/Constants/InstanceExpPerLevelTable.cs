@@ -45,8 +45,11 @@ namespace EnhancementCalculator.Constants
                 {76,  50000000},
                 {77,  50000000},
                 {78,  50000000},
-                {79,  50000000},
-                {80,  50000000}
+                {80,  50000000},
+                {81,  50000000},
+                {82,  50000000},
+                {83,  50000000},
+                {84,  50000000}
             };
         public static IReadOnlyDictionary<int, ulong> BaiumExpPerLevelTable = new Dictionary<int, ulong>()
             {
@@ -60,7 +63,11 @@ namespace EnhancementCalculator.Constants
                 {77,  200000000},
                 {78,  200000000},
                 {79,  200000000},
-                {80,  200000000}
+                {80,  200000000},
+                {81,  200000000},
+                {82,  200000000},
+                {83,  200000000},
+                {84,  200000000}
             };
         public static IReadOnlyDictionary<int, ulong> AntharasExpPerLevelTable = new Dictionary<int, ulong>()
             {
@@ -70,11 +77,15 @@ namespace EnhancementCalculator.Constants
                 {73,  100000000},
                 {74,  100000000},
                 {75,  100000000},
-                {76,  200000000},
-                {77,  200000000},
-                {78,  200000000},
-                {79,  200000000},
-                {80,  200000000}
+                {76,  300000000},
+                {77,  300000000},
+                {78,  300000000},
+                {79,  300000000},
+                {80,  300000000},
+                {81,  300000000},
+                {82,  300000000},
+                {83,  300000000},
+                {84,  300000000}
             };
     }
 }
