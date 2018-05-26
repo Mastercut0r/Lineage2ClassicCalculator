@@ -8,6 +8,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
             <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="135"/>
@@ -23,5 +24,18 @@
         <ComboBox Name="EnhancedItemsBox" Grid.Column="1" Grid.Row="1" Height="30" SelectionChanged="EnhancedItemsBox_SelectionChanged"/>
         <ComboBox Name="EnhancementLevelBox" Grid.Column="2" Grid.Row="1" Height="30" SelectionChanged="EnhancementLevelBox_SelectionChanged"/>
         <Label Name="TotalPhysicalStatText" Grid.Column="3" Height="30" Grid.Row="1" Margin="5" FontWeight="Bold" Foreground="#FFF10909"/>
+        <GroupBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Header="Weapon Filter">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <RadioButton Name="Rb_ShowAll" Grid.Row="2" Content="Show all" Margin="0,0,5,0" Checked="Rb_ShowAll_Checked"/>
+                <RadioButton Name="Rb_Phys" Grid.Row="2" Content="Show physical only" Margin="0,0,5,0" Checked="Rb_Phys_Checked"/>
+                <RadioButton Name="Rb_Mage" Grid.Row="2"  Content="Show mage only" Margin="0,0,5,0" Checked="Rb_Mage_Checked"/>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Header="Sort options">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <RadioButton Name="Rb_SortByP" Grid.Row="2" Content="Sort by P.Atack" Margin="0,0,5,0" Checked="Rb_SortByP_Checked"/>
+                <RadioButton Name="Rb_SortByM" Grid.Row="2" Content="Sort by M.Atack" Margin="0,0,5,0" Checked="Rb_SortByM_Checked"/>
+            </StackPanel>
+        </GroupBox>
     </Grid>
 </UserControl>

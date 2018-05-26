@@ -1,6 +1,6 @@
 ﻿namespace EnhancementCalculator.Constants
 {
-    public enum WeaponType
+    public enum WeaponClass
     {
         Daggers,
         OnehandedSwords,

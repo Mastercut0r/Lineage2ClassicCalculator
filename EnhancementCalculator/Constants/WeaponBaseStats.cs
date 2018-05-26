@@ -4,7 +4,7 @@
     {
         public static (int patak, int matak) PaagrioSword = (169, 76);
         public static (int patak, int matak) BerserkerSword = (190, 83);
-        public static (int patak, int matak) GreatSword = (213, 91);
+        public static (int patak, int matak) Greatsword = (213, 91);
         public static (int patak, int matak) GuardianSword = (236, 99);
         public static (int patak, int matak) MasterInferno = (259, 107);
         public static (int patak, int matak) DragonSlayer = (282, 114);

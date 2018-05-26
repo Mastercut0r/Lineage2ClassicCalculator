@@ -4,7 +4,7 @@ namespace EnhancementCalculator.Services
 {
     public static class Enhancer
     {
-        public static (int patack, int matack) EnhanceItem(int basePatak, int baseMatak, int enhancementLevel, WeaponType weaponType)
+        public static (int patack, int matack) EnhanceItem(int basePatak, int baseMatak, int enhancementLevel, WeaponClass weaponType)
         {
             int finalPatack = basePatak;
             int finalMatack = baseMatak;
@@ -25,26 +25,26 @@ namespace EnhancementCalculator.Services
             return (finalPatack, finalMatack);
         }
 
-        private static (int patack, int matack) GetEnhancementBonus(WeaponType weaponType)
+        private static (int patack, int matack) GetEnhancementBonus(WeaponClass weaponType)
         {
             int patackBonus = 0;
             int matackBonus = 0;
             switch (weaponType)
             {
-                case WeaponType.Daggers:
-                case WeaponType.OnehandedSwords:
-                case WeaponType.OnehandedBlunts:
+                case WeaponClass.Daggers:
+                case WeaponClass.OnehandedSwords:
+                case WeaponClass.OnehandedBlunts:
                     patackBonus = 4;
                     matackBonus = 3;
                     break;
-                case WeaponType.TwohandedSwords:
-                case WeaponType.TwohandedBlunts:
-                case WeaponType.DualSwords:
-                case WeaponType.Fists:
+                case WeaponClass.TwohandedSwords:
+                case WeaponClass.TwohandedBlunts:
+                case WeaponClass.DualSwords:
+                case WeaponClass.Fists:
                     patackBonus = 5;
                     matackBonus = 3;
                     break;
-                case WeaponType.Bows:
+                case WeaponClass.Bows:
                     patackBonus = 8;
                     matackBonus = 3;
                     break;
