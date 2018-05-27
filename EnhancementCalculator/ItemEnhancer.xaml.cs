@@ -80,6 +80,7 @@ namespace EnhancementCalculator
 
         private void InitWeapons()
         {
+            TotalPhysicalStatText.Content = string.Empty;
             var sortedWeapons = ApplySortingSelection();
             if (sortedWeapons!=null)
             {
