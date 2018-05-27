@@ -67,6 +67,16 @@ namespace EnhancementCalculator.Services
                     calculationNeeded = false;//ToDo check if correct!!
                 var tempExpMark = RemainingExperience;
                 WeeklyCyclesNeeded += 1;
+                if (antharas && ExperienceForLevelTable.IsLevelUpPossible(CurrentLevel))
+                {
+                    if (InstanceExpPerLevelTable.AntharasExpPerLevelTable.ContainsKey(CurrentLevel)
+                        && RemainingExperience > InstanceExpPerLevelTable.AntharasExpPerLevelTable[CurrentLevel])
+                    {
+                        scrollsContainer = CalculatePricesPerScrollType(InstanceTypes.Antharas, scrollsContainer);
+                        RemainingExperience -= InstanceExpPerLevelTable.AntharasExpPerLevelTable[CurrentLevel];
+                        LevelUp(InstanceExpPerLevelTable.AntharasExpPerLevelTable[CurrentLevel]);
+                    }
+                }
                 if (arena && ExperienceForLevelTable.IsLevelUpPossible(CurrentLevel))
                 {
                     if (RemainingExperience > InstanceExpPerLevelTable.ArenaRbExpPerLevelTable[CurrentLevel] * arenaRbCount)
@@ -85,16 +95,6 @@ namespace EnhancementCalculator.Services
                         scrollsContainer = CalculatePricesPerScrollType(InstanceTypes.Baium, scrollsContainer);
                         RemainingExperience -= InstanceExpPerLevelTable.BaiumExpPerLevelTable[CurrentLevel];
                         LevelUp(InstanceExpPerLevelTable.BaiumExpPerLevelTable[CurrentLevel]);
-                    }
-                }
-                if (antharas && ExperienceForLevelTable.IsLevelUpPossible(CurrentLevel))
-                {
-                    if (InstanceExpPerLevelTable.AntharasExpPerLevelTable.ContainsKey(CurrentLevel)
-                        && RemainingExperience > InstanceExpPerLevelTable.AntharasExpPerLevelTable[CurrentLevel])
-                    {
-                        scrollsContainer = CalculatePricesPerScrollType(InstanceTypes.Antharas, scrollsContainer);
-                        RemainingExperience -= InstanceExpPerLevelTable.AntharasExpPerLevelTable[CurrentLevel];
-                        LevelUp(InstanceExpPerLevelTable.AntharasExpPerLevelTable[CurrentLevel]);
                     }
                 }
                 if (tempExpMark - RemainingExperience == 0)
