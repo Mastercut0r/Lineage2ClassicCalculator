@@ -43,7 +43,7 @@ namespace EnhancementCalculator
         {
             var weapon = _itemsToEnhance[EnhancedItemsBox.SelectedValue.ToString()];
             weapon.EnhanceWeapon(Convert.ToUInt16(EnhancementLevelBox.SelectedValue));
-            return $"Total: {weapon.FinalStats.patack}/{weapon.FinalStats.matack} = (Base: {weapon.FinalStats.patack}/{weapon.FinalStats.matack} + Bonus: {weapon.FinalStats.patack - weapon.BaseStats.patack}/{weapon.FinalStats.matack - weapon.BaseStats.matack})";
+            return $"Total: {weapon.FinalStats.patack}/{weapon.FinalStats.matack} = (Base: {weapon.BaseStats.patack}/{weapon.BaseStats.matack} + Bonus: {weapon.FinalStats.patack - weapon.BaseStats.patack}/{weapon.FinalStats.matack - weapon.BaseStats.matack})";
         }
 
         private void EnhancedItemsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
