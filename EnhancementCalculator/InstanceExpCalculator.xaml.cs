@@ -13,6 +13,14 @@ namespace EnhancementCalculator
     /// </summary>
     public partial class InstanceExpCalculator : UserControl
     {
+        public bool ArenaEnabled { get; set; }
+        public bool BaiumEnabled { get; set; }
+        public bool AntharasEnabled { get; set; }
+        public int SelectedArenaRbCount { get; set; }
+        public int StartLevel { get; set; }
+        public int TargetLevel { get; set; }
+        public int GainedExpPercentage { get; set; }
+
         public InstanceExpCalculator()
         {
             InitializeComponent();
@@ -33,12 +41,11 @@ namespace EnhancementCalculator
         {
             if (ValidateControls())
             {
-                ushort startLevel = Convert.ToUInt16(cboxYourLvl.Text);
-                ushort targetLevel = Convert.ToUInt16(cboxTargetLvl.Text);
-                ushort gainedExpPercentage = Convert.ToUInt16(slidGainedExp.Value);
-                int arenaRbCount = Convert.ToInt32(cboxArenaRbCount.Text);
+                //ushort startLevel = Convert.ToUInt16(cboxYourLvl.Text);
+                //ushort targetLevel = Convert.ToUInt16(cboxTargetLvl.Text);
+                //ushort gainedExpPercentage = Convert.ToUInt16(slidGainedExp.Value);
                 var instanceExpingCalculator = new InstanceExpingCalculator();
-                var result = instanceExpingCalculator.CalculateExping(startLevel, targetLevel, gainedExpPercentage, (bool)ckArena.IsChecked, (bool)ckBaium.IsChecked, (bool)ckAntharas.IsChecked, arenaRbCount, 0);
+                var result = instanceExpingCalculator.CalculateExping(StartLevel, TargetLevel, GainedExpPercentage, ArenaEnabled, BaiumEnabled, AntharasEnabled, SelectedArenaRbCount, 0);
                 if (result != null)
                 {
                     DisplayScrollCount(result);
@@ -51,7 +58,7 @@ namespace EnhancementCalculator
         {
             if (string.IsNullOrEmpty(cboxYourLvl.Text)) return false;
             if (string.IsNullOrEmpty(cboxTargetLvl.Text)) return false;
-            if (string.IsNullOrEmpty(cboxArenaRbCount.Text)) return false;
+            //if (string.IsNullOrEmpty(SelectedArenaRbCount)) return false;
 
             return true;
         }

@@ -4,6 +4,6 @@ namespace EnhancementCalculator.Services
 {
     public interface IInstanceExpingCalculator
     {
-        LevelingContainer CalculateExping(ushort startLevel, ushort targetLevel, ushort gainedExpPercentage, bool clanArena = false, bool baium = false, bool antharas = false, int arenaRbCount = 0, ushort instanceEntranceFee = 0);
+        LevelingContainer CalculateExping(int startLevel, int targetLevel, int gainedExpPercentage, bool clanArena = false, bool baium = false, bool antharas = false, int arenaRbCount = 0, int instanceEntranceFee = 0);
     }
 }

@@ -97,6 +97,9 @@
     <Compile Include="Services\IInstanceExpingCalculator.cs" />
     <Compile Include="Services\InstanceExpingCalculator.cs" />
     <Compile Include="Constants\WeaponBaseStats.cs" />
+    <Compile Include="UserControls\ArenaRbSelector.xaml.cs">
+      <DependentUpon>ArenaRbSelector.xaml</DependentUpon>
+    </Compile>
     <Page Include="InstanceExpCalculator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -121,6 +124,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControls\ArenaRbSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

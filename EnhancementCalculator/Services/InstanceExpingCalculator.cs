@@ -23,7 +23,7 @@ namespace EnhancementCalculator.Services
         /// <param name="arenaRbCount"></param>
         /// <param name="instanceEntranceFee"></param>
         /// <returns>returns data container if arguments are valid. Otherwise returns light weight container with total experience only</returns>
-        public LevelingContainer CalculateExping(ushort startLevel, ushort targetLevel, ushort gainedExpPercentage, bool clanArena = false, bool baium = false, bool antharas = false, int arenaRbCount = 0, ushort instanceEntranceFee = 0)
+        public LevelingContainer CalculateExping(int startLevel, int targetLevel, int gainedExpPercentage, bool clanArena = false, bool baium = false, bool antharas = false, int arenaRbCount = 0, int instanceEntranceFee = 0)
         {
             if (startLevel > targetLevel) return null;
             ulong totalExperience = CalculateTotalExp(startLevel, targetLevel, gainedExpPercentage);
@@ -33,7 +33,7 @@ namespace EnhancementCalculator.Services
             var moneyTotal = CaclulateMoneyTotal(scrollContainer);
             return new LevelingContainer(totalExperience, RemainingExperience, WeeklyCyclesNeeded, ArenaRbKillCount, scrollContainer.hundertKkScrollNeeded, scrollContainer.fiftyKkScrollNeeded, scrollContainer.tenKkScrollNeeded, moneyTotal);
         }
-        private ulong CalculateTotalExp(ushort startLevel, ushort targetLevel, ushort gainedExpPercentage)
+        private ulong CalculateTotalExp(int startLevel, int targetLevel, int gainedExpPercentage)
         {
             if (startLevel >= targetLevel)
                 return 0;
@@ -49,7 +49,7 @@ namespace EnhancementCalculator.Services
             expNeeded -= (ulong)(ExperienceForLevelTable.ExperienceForLevel[(ushort)(startLevel + 1)] * ((double)gainedExpPercentage / 100));
             return expNeeded;
         }
-        private (int tenKkScrollNeeded, int fiftyKkScrollNeeded, int hundertKkScrollNeeded) CalculateExpScrollsNeeded(ulong totalExp, ushort startLevel, bool arena, bool baium, bool antharas, ushort arenaRbCount)
+        private (int tenKkScrollNeeded, int fiftyKkScrollNeeded, int hundertKkScrollNeeded) CalculateExpScrollsNeeded(ulong totalExp, int startLevel, bool arena, bool baium, bool antharas, ushort arenaRbCount)
         {
             if (!antharas && !arena && !baium)
                 return (0, 0, 0);
