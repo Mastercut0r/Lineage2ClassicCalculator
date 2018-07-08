@@ -1,91 +1,46 @@
-﻿using System.Collections.Generic;
+﻿using EnhancementCalculator.Models;
+using System.Collections.Generic;
 
 namespace EnhancementCalculator.Constants
 {
+    //https://4gameforum.com/threads/682002/
     public static class InstanceExpPerLevelTable
     {
-        public static IReadOnlyDictionary<int, ulong> ArenaRbExpPerLevelTable = new Dictionary<int, ulong>()
+        public static IReadOnlyDictionary<int, IScrolls> BaiumExpPerLevelTable = new Dictionary<int, IScrolls>()
             {
-                {40,  10000000},
-                {41,  10000000},
-                {42,  10000000},
-                {43,  10000000},
-                {44,  10000000},
-                {45,  10000000},
-                {46,  10000000},
-                {47,  10000000},
-                {48,  10000000},
-                {49,  10000000},
-                {50,  30000000},
-                {51,  30000000},
-                {52,  30000000},
-                {53,  30000000},
-                {54,  30000000},
-                {55,  30000000},
-                {56,  30000000},
-                {57,  30000000},
-                {58,  30000000},
-                {59,  30000000},
-                {60,  50000000},
-                {61,  50000000},
-                {62,  50000000},
-                {63,  50000000},
-                {64,  50000000},
-                {65,  50000000},
-                {66,  50000000},
-                {67,  50000000},
-                {68,  50000000},
-                {69,  50000000},
-                {70,  50000000},
-                {71,  50000000},
-                {72,  50000000},
-                {73,  50000000},
-                {74,  50000000},
-                {75,  50000000},
-                {76,  50000000},
-                {77,  50000000},
-                {78,  50000000},
-                {80,  50000000},
-                {81,  50000000},
-                {82,  50000000},
-                {83,  50000000},
-                {84,  50000000}
+                {70,  ScrollConstants.hundredMil},
+                {71,  ScrollConstants.hundredMil},
+                {72,  ScrollConstants.hundredMil},
+                {73,  ScrollConstants.hundredMil},
+                {74,  ScrollConstants.hundredMil},
+                {75,  ScrollConstants.hundredMil},
+                {76,  ScrollConstants.twoHundredMil},
+                {77,  ScrollConstants.twoHundredMil},
+                {78,  ScrollConstants.twoHundredMil},
+                {79,  ScrollConstants.twoHundredMil},
+                {80,  ScrollConstants.twoHundredMil},
+                {81,  ScrollConstants.twoHundredMil},
+                {82,  ScrollConstants.twoHundredMil},
+                {83,  ScrollConstants.twoHundredMil},
+                {84,  ScrollConstants.twoHundredMil}
             };
-        public static IReadOnlyDictionary<int, ulong> BaiumExpPerLevelTable = new Dictionary<int, ulong>()
+        public static IReadOnlyDictionary<int, IScrolls> AntharasExpPerLevelTable = new Dictionary<int, IScrolls>()
             {
-                {70,  100000000},
-                {71,  100000000},
-                {72,  100000000},
-                {73,  100000000},
-                {74,  100000000},
-                {75,  100000000},
-                {76,  200000000},
-                {77,  200000000},
-                {78,  200000000},
-                {79,  200000000},
-                {80,  200000000},
-                {81,  200000000},
-                {82,  200000000},
-                {83,  200000000},
-                {84,  200000000}
-            };
-        public static IReadOnlyDictionary<int, ulong> AntharasExpPerLevelTable = new Dictionary<int, ulong>()
-            {
-                {70,  100000000},
-                {71,  100000000},
-                {72,  100000000},
-                {73,  100000000},
-                {74,  100000000},
-                {75,  100000000},
-                {76,  300000000},
-                {77,  300000000},
-                {78,  300000000},
-                {79,  300000000},
-                {80,  300000000},
-                {81,  300000000},
-                {82,  300000000},
-                {83,  300000000},
-                {84,  300000000}
+                {70,  ScrollConstants.hundredMil},
+                {71,  ScrollConstants.hundredMil},
+                {72,  ScrollConstants.hundredMil},
+                {73,  ScrollConstants.hundredMil},
+                {74,  ScrollConstants.hundredMil},
+                {75,  ScrollConstants.hundredMil},
+                {76,  ScrollConstants.threeHundredMil},
+                {77,  ScrollConstants.threeHundredMil},
+                {78,  ScrollConstants.threeHundredMil},
+                {79,  ScrollConstants.threeHundredMil},
+                {80,  ScrollConstants.threeHundredMil},
+                {81,  ScrollConstants.threeHundredMil},
+                {82,  ScrollConstants.threeHundredMil},
+                {83,  ScrollConstants.threeHundredMil},
+                {84,  ScrollConstants.threeHundredMil}
             };
     }
 }

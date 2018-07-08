@@ -10,28 +10,55 @@ namespace EnhancementCalculator.Services
         private ulong RemainingExperience { get; set; }
         private ulong ExperienceGainedOnLevel { get; set; }
         private int CurrentLevel { get; set; }
+        private IClanArena m_ClanArena;
 
         /// <summary>
         /// Calculates all relevant data and puts them in a container
         /// </summary>
-        /// <param name="startLevel"></param>
-        /// <param name="targetLevel"></param>
-        /// <param name="gainedExpPercentage"></param>
-        /// <param name="clanArena"></param>
-        /// <param name="baium"></param>
-        /// <param name="antharas"></param>
-        /// <param name="arenaRbCount"></param>
-        /// <param name="instanceEntranceFee"></param>
+        /// <param name="startLevel">The start level.</param>
+        /// <param name="targetLevel">The target level.</param>
+        /// <param name="gainedExpPercentage">The gained exp percentage.</param>
+        /// <param name="startBossStage">The start boss stage.</param>
+        /// <param name="endBossStage">The end boss stage.</param>
+        /// <param name="isClanArena">if set to <c>true</c> [is clan arena].</param>
+        /// <param name="isBaium">if set to <c>true</c> [is baium].</param>
+        /// <param name="isAntharas">if set to <c>true</c> [is antharas].</param>
+        /// <param name="instanceEntranceFee">The instance entrance fee.</param>
+        /// <param name="clanArena">The clan arena.</param>
         /// <returns>returns data container if arguments are valid. Otherwise returns light weight container with total experience only</returns>
-        public LevelingContainer CalculateExping(int startLevel, int targetLevel, int gainedExpPercentage, bool clanArena = false, bool baium = false, bool antharas = false, int arenaRbCount = 0, int instanceEntranceFee = 0)
+        public LevelingContainer CalculateExping(
+            int startLevel, 
+            int targetLevel, 
+            int gainedExpPercentage,
+            int startBossStage,
+            int endBossStage,
+            bool isClanArena = false, 
+            bool isBaium = false, 
+            bool isAntharas = false, 
+            int instanceEntranceFee = 0,
+            IClanArena clanArena = null)
         {
             if (startLevel > targetLevel) return null;
             ulong totalExperience = CalculateTotalExp(startLevel, targetLevel, gainedExpPercentage);
-            if (!clanArena && !baium && !antharas) return LevelingContainer.CreateExpContainer(totalExperience);
+            if (!isClanArena && !isBaium && !isAntharas) return LevelingContainer.CreateExpContainer(totalExperience);
+            m_ClanArena = clanArena ?? new ClanArena();
+            var scrollContainer = CalculateExpScrollsNeeded
+                (
+                totalExperience,
+                startLevel,
+                isClanArena,
+                isBaium,
+                isAntharas,
+                startBossStage,
+                endBossStage);
 
-            var scrollContainer = CalculateExpScrollsNeeded(totalExperience, startLevel, clanArena, baium, antharas, (ushort)arenaRbCount);
-            var moneyTotal = CaclulateMoneyTotal(scrollContainer);
-            return new LevelingContainer(totalExperience, RemainingExperience, WeeklyCyclesNeeded, ArenaRbKillCount, scrollContainer.hundertKkScrollNeeded, scrollContainer.fiftyKkScrollNeeded, scrollContainer.tenKkScrollNeeded, moneyTotal);
+            //var moneyTotal = CaclulateMoneyTotal(scrollContainer);
+            return new LevelingContainer(
+                totalExperience, 
+                RemainingExperience, 
+                WeeklyCyclesNeeded, 
+                ArenaRbKillCount,
+                scrollContainer);
         }
         private ulong CalculateTotalExp(int startLevel, int targetLevel, int gainedExpPercentage)
         {
@@ -49,15 +76,23 @@ namespace EnhancementCalculator.Services
             expNeeded -= (ulong)(ExperienceForLevelTable.ExperienceForLevel[(ushort)(startLevel + 1)] * ((double)gainedExpPercentage / 100));
             return expNeeded;
         }
-        private (int tenKkScrollNeeded, int fiftyKkScrollNeeded, int hundertKkScrollNeeded) CalculateExpScrollsNeeded(ulong totalExp, int startLevel, bool arena, bool baium, bool antharas, ushort arenaRbCount)
+        private IScrolls CalculateExpScrollsNeeded(
+            ulong totalExp,
+            int startLevel, 
+            bool arena, 
+            bool baium, 
+            bool antharas, 
+            int startBossStage,
+            int endBossStage)
         {
             if (!antharas && !arena && !baium)
-                return (0, 0, 0);
+                return Scrolls.CreateEmptyContainer();
             CurrentLevel = startLevel;
-            int hundertKkScrollNeeded = 0;
-            int fiftyKkScrollNeeded = 0;
-            int tenKkScrollNeeded = 0;
-            var scrollsContainer = (tenKkScrollNeeded, fiftyKkScrollNeeded, hundertKkScrollNeeded);
+            //int hundertKkScrollNeeded = 0;
+            //int fiftyKkScrollNeeded = 0;
+            //int tenKkScrollNeeded = 0;
+            //var scrollsContainer = (tenKkScrollNeeded, fiftyKkScrollNeeded, hundertKkScrollNeeded);
+            Scrolls collectedScrolls = (Scrolls)Scrolls.CreateEmptyContainer();
             RemainingExperience = totalExp;
             WeeklyCyclesNeeded = 0;
             bool calculationNeeded = true;
@@ -70,31 +105,37 @@ namespace EnhancementCalculator.Services
                 if (antharas && ExperienceForLevelTable.IsLevelUpPossible(CurrentLevel))
                 {
                     if (InstanceExpPerLevelTable.AntharasExpPerLevelTable.ContainsKey(CurrentLevel)
-                        && RemainingExperience > InstanceExpPerLevelTable.AntharasExpPerLevelTable[CurrentLevel])
+                        && RemainingExperience > InstanceExpPerLevelTable.AntharasExpPerLevelTable[CurrentLevel].TotalExp)
                     {
-                        scrollsContainer = CalculatePricesPerScrollType(InstanceTypes.Antharas, scrollsContainer);
-                        RemainingExperience -= InstanceExpPerLevelTable.AntharasExpPerLevelTable[CurrentLevel];
-                        LevelUp(InstanceExpPerLevelTable.AntharasExpPerLevelTable[CurrentLevel]);
+                        Scrolls rewards = (Scrolls)InstanceExpPerLevelTable.AntharasExpPerLevelTable[CurrentLevel];
+                        //scrollsContainer = CalculatePricesPerScrollType(InstanceTypes.Antharas, scrollsContainer);
+                        collectedScrolls = collectedScrolls + rewards;
+                        RemainingExperience -= rewards.TotalExp;
+                        LevelUp(rewards.TotalExp);
                     }
                 }
                 if (arena && ExperienceForLevelTable.IsLevelUpPossible(CurrentLevel))
                 {
-                    if (RemainingExperience > InstanceExpPerLevelTable.ArenaRbExpPerLevelTable[CurrentLevel] * arenaRbCount)
+                    Scrolls rewards = (Scrolls)m_ClanArena.Reward(CurrentLevel, startBossStage, endBossStage);
+                    if (RemainingExperience > rewards.TotalExp)
                     {
-                        ArenaRbKillCount += arenaRbCount;
-                        scrollsContainer = CalculatePricesPerScrollType(InstanceTypes.ClanArena, scrollsContainer, arenaRbCount);
-                        RemainingExperience -= InstanceExpPerLevelTable.ArenaRbExpPerLevelTable[CurrentLevel] * arenaRbCount;
-                        LevelUp(InstanceExpPerLevelTable.ArenaRbExpPerLevelTable[CurrentLevel] * arenaRbCount);
+                        ArenaRbKillCount += endBossStage - startBossStage;
+                        collectedScrolls = collectedScrolls + rewards;
+                        //scrollsContainer = CalculatePricesPerScrollType(InstanceTypes.ClanArena, scrollsContainer, arenaRbCount);
+                        RemainingExperience -= rewards.TotalExp;
+                        LevelUp(rewards.TotalExp);
                     }
                 }
                 if (baium && ExperienceForLevelTable.IsLevelUpPossible(CurrentLevel))
                 {
                     if (InstanceExpPerLevelTable.BaiumExpPerLevelTable.ContainsKey(CurrentLevel)
-                        && RemainingExperience > InstanceExpPerLevelTable.BaiumExpPerLevelTable[CurrentLevel])
+                        && RemainingExperience > InstanceExpPerLevelTable.BaiumExpPerLevelTable[CurrentLevel].TotalExp)
                     {
-                        scrollsContainer = CalculatePricesPerScrollType(InstanceTypes.Baium, scrollsContainer);
-                        RemainingExperience -= InstanceExpPerLevelTable.BaiumExpPerLevelTable[CurrentLevel];
-                        LevelUp(InstanceExpPerLevelTable.BaiumExpPerLevelTable[CurrentLevel]);
+                        //scrollsContainer = CalculatePricesPerScrollType(InstanceTypes.Baium, scrollsContainer);
+                        Scrolls rewards = (Scrolls)InstanceExpPerLevelTable.AntharasExpPerLevelTable[CurrentLevel];
+                        collectedScrolls = collectedScrolls + rewards;
+                        RemainingExperience -= rewards.TotalExp;
+                        LevelUp(rewards.TotalExp);
                     }
                 }
                 if (tempExpMark - RemainingExperience == 0)
@@ -103,7 +144,7 @@ namespace EnhancementCalculator.Services
                     WeeklyCyclesNeeded -= 1;
                 }
             }
-            return scrollsContainer;
+            return collectedScrolls;
         }
         private bool LevelUp(ulong expIncrease)
         {
@@ -116,40 +157,5 @@ namespace EnhancementCalculator.Services
             }
             return false;
         }
-        private (int tenKkScrollNeeded, int fiftyKkScrollNeeded, int hundertKkScrollNeeded) CalculatePricesPerScrollType(InstanceTypes instanceType, (int tenKkScrollNeeded, int fiftyKkScrollNeeded, int hundertKkScrollNeeded) scrollContainer, ushort arenaRbCount = 0)
-        {
-            switch (instanceType)
-            {
-                case InstanceTypes.ClanArena:
-                    if (InstanceExpPerLevelTable.ArenaRbExpPerLevelTable[CurrentLevel] == 10000000)
-                    {
-                        scrollContainer.tenKkScrollNeeded += 1 * arenaRbCount;
-                    }
-                    if (InstanceExpPerLevelTable.ArenaRbExpPerLevelTable[CurrentLevel] == 30000000)
-                    {
-                        scrollContainer.tenKkScrollNeeded += 3 * arenaRbCount;
-                    }
-                    if (InstanceExpPerLevelTable.ArenaRbExpPerLevelTable[CurrentLevel] == 50000000)
-                    {
-                        scrollContainer.fiftyKkScrollNeeded += 1 * arenaRbCount;
-                    }
-                    break;
-                case InstanceTypes.Baium:
-                    scrollContainer.hundertKkScrollNeeded += (InstanceExpPerLevelTable.BaiumExpPerLevelTable[CurrentLevel] == 100000000) ? 1 : 2;
-                    break;
-                case InstanceTypes.Antharas:
-                    scrollContainer.hundertKkScrollNeeded += (InstanceExpPerLevelTable.AntharasExpPerLevelTable[CurrentLevel] == 100000000) ? 1 : 3;
-                    break;
-                default:
-                    break;
-            }
-            return scrollContainer;
-        }
-        private ulong CaclulateMoneyTotal((int tenKkScrollNeeded, int fiftyKkScrollNeeded, int hundertKkScrollNeeded) scrollContainer)
-        {
-            //ToDo calculate arena fee too
-           return (ulong)scrollContainer.tenKkScrollNeeded * (ulong)ExpScrollPrices.tenKkExpScrollPrice + (ulong)scrollContainer.fiftyKkScrollNeeded * (ulong)ExpScrollPrices.fiftyKkExpScrollPrice + (ulong)scrollContainer.hundertKkScrollNeeded * (ulong)ExpScrollPrices.hundertKkExpScrollPrice;
-        }
-
     }
 }

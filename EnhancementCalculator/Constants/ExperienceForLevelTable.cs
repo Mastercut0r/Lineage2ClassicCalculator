@@ -4,6 +4,7 @@ namespace EnhancementCalculator.Constants
 {
     public static class ExperienceForLevelTable
     {
+        public static IEnumerable<int> LevelRanges => ExperienceForLevel.Keys;
         public static IReadOnlyDictionary<int, ulong> ExperienceForLevel = new Dictionary<int, ulong>()
         {
                {40,  8551061},

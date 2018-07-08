@@ -75,12 +75,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Constants\ArenaRewardPerLevelRange.cs" />
+    <Compile Include="Constants\ScrollConstants.cs" />
     <Compile Include="Constants\InstanceExpPerLevelTable.cs" />
     <Compile Include="Constants\ExperienceForLevelTable.cs" />
-    <Compile Include="Constants\ExpScrollPrices.cs" />
     <Compile Include="Constants\WeaponsTable.cs" />
     <Compile Include="Constants\WeaponClass.cs" />
-    <Compile Include="Models\InstanceTypes.cs" />
+    <Compile Include="Models\Scrolls.cs" />
+    <Compile Include="Models\ClanArena.cs" />
+    <Compile Include="Models\IClanArena.cs" />
+    <Compile Include="Models\IScrolls.cs" />
     <Compile Include="Models\IWeapon.cs" />
     <Compile Include="Models\LevelingContainer.cs" />
     <Compile Include="Models\Weapon.cs" />
@@ -97,6 +101,8 @@
     <Compile Include="Services\IInstanceExpingCalculator.cs" />
     <Compile Include="Services\InstanceExpingCalculator.cs" />
     <Compile Include="Constants\WeaponBaseStats.cs" />
+    <Compile Include="Services\IResultFormatter.cs" />
+    <Compile Include="Services\ResultFormatter.cs" />
     <Compile Include="UserControls\ArenaRbSelector.xaml.cs">
       <DependentUpon>ArenaRbSelector.xaml</DependentUpon>
     </Compile>

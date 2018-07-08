@@ -1,8 +1,8 @@
 ﻿using EnhancementCalculator.Constants;
-using EnhancementCalculator.Models;
 using EnhancementCalculator.Services;
-using System;
-using System.Text;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -16,113 +16,188 @@ namespace EnhancementCalculator
         public bool ArenaEnabled { get; set; }
         public bool BaiumEnabled { get; set; }
         public bool AntharasEnabled { get; set; }
-        public int SelectedArenaRbCount { get; set; }
-        public int StartLevel { get; set; }
-        public int TargetLevel { get; set; }
+
+        public List<int> LevelRanges { get; set; }
+        public ObservableCollection<int> TargetLevelRanges { get; set; }
+        private int m_SelectedStartLevel;
+        public int SelectedStartLevel
+        {
+            get { return m_SelectedStartLevel; }
+            set
+            {
+                m_SelectedStartLevel = value;
+                FetchPossibleTargetLevelRanges();
+            }
+        }
+        public int SelectedTargetLevel
+        {
+            get { return (int)GetValue(SelectedTargetLevelProperty); }
+            set { SetValue(SelectedTargetLevelProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for SelectedTargetLevel.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SelectedTargetLevelProperty =
+            DependencyProperty.Register("SelectedTargetLevel", typeof(int), typeof(InstanceExpCalculator), new PropertyMetadata(0));
+
+        private int m_SelectedStartStage;
+        public int SelectedStartStage
+        {
+            get { return m_SelectedStartStage; }
+            set
+            {
+                m_SelectedStartStage = value;
+                FetchPossibleEndStages();
+            }
+        }
+
+        public int SelectedEndStage
+        {
+            get { return (int)GetValue(SelectedEndStageProperty); }
+            set { SetValue(SelectedEndStageProperty, value); }
+        }
+        // Using a DependencyProperty as the backing store for SelectedEndStage.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SelectedEndStageProperty =
+            DependencyProperty.Register("SelectedEndStage", typeof(int), typeof(InstanceExpCalculator), new PropertyMetadata(0));
+
+        public List<int> ArenaStages { get; set; }
+        public ObservableCollection<int> PossibleEndStages { get; set; }
+
+
         public int GainedExpPercentage { get; set; }
+        public string TotalExperience
+        {
+            get { return (string)GetValue(TotalExperienceProperty); }
+            set { SetValue(TotalExperienceProperty, value); }
+        }
+        // Using a DependencyProperty as the backing store for m_ScrollPrices.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TotalExperienceProperty =
+            DependencyProperty.Register("TotalExperience", typeof(string), typeof(InstanceExpCalculator), new PropertyMetadata(null));
+
+        public string ScrollsCount
+        {
+            get { return (string)GetValue(ScrollsCountProperty); }
+            set { SetValue(ScrollsCountProperty, value); }
+        }
+        // Using a DependencyProperty as the backing store for m_ScrollPrices.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ScrollsCountProperty =
+            DependencyProperty.Register("ScrollsCount", typeof(string), typeof(InstanceExpCalculator), new PropertyMetadata(null));
+
+        public string MoneyForScrolls
+        {
+            get { return (string)GetValue(MoneyForScrollsProperty); }
+            set { SetValue(MoneyForScrollsProperty, value); }
+        }
+        // Using a DependencyProperty as the backing store for m_ScrollPrices.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty MoneyForScrollsProperty =
+            DependencyProperty.Register("MoneyForScrolls", typeof(string), typeof(InstanceExpCalculator), new PropertyMetadata(null));
+
+        public string WeeksCount
+        {
+            get { return (string)GetValue(WeeksCountProperty); }
+            set { SetValue(WeeksCountProperty, value); }
+        }
+        // Using a DependencyProperty as the backing store for m_WeeksCount.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty WeeksCountProperty =
+            DependencyProperty.Register("WeeksCount", typeof(string), typeof(InstanceExpCalculator), new PropertyMetadata(null));
+
+        public string RemainingExperience
+        {
+            get { return (string)GetValue(RemainingExperienceProperty); }
+            set { SetValue(RemainingExperienceProperty, value); }
+        }
+        // Using a DependencyProperty as the backing store for RemainingExperience.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty RemainingExperienceProperty =
+            DependencyProperty.Register("RemainingExperience", typeof(string), typeof(InstanceExpCalculator), new PropertyMetadata(null));
+
+        public string MoneyTotal
+        {
+            get { return (string)GetValue(MoneyTotalProperty); }
+            set { SetValue(MoneyTotalProperty, value); }
+        }
+        // Using a DependencyProperty as the backing store for MoneyTotal.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty MoneyTotalProperty =
+            DependencyProperty.Register("MoneyTotal", typeof(string), typeof(InstanceExpCalculator), new PropertyMetadata(null));
+
+        //public ObservableCollection<int> m_LevelRanges { get; set; }
+        private IResultFormatter m_ResultFormatter = new ResultFormatter();
 
         public InstanceExpCalculator()
         {
+            LevelRanges = new List<int>();
+            TargetLevelRanges = new ObservableCollection<int>();
+            ArenaStages = new List<int>();
+            PossibleEndStages = new ObservableCollection<int>();
             InitializeComponent();
-            FetchLevelRanges();
+            FetchAllLevelRanges();
+            FetchPossibleTargetLevelRanges();
+            DataContext = this;
+            FetchStartBossStages();
+            FetchPossibleEndStages();
         }
-        private void FetchLevelRanges()
+        private void FetchStartBossStages()
         {
-            foreach (var level in ExperienceForLevelTable.ExperienceForLevel)
+            foreach (var stage in ArenaRewardPerLevelRange.ArenaStages)
             {
-                cboxYourLvl.Items.Add(level.Key);
-                cboxTargetLvl.Items.Add(level.Key);
+                ArenaStages.Add(stage);
             }
-            cboxTargetLvl.Items.RemoveAt(0);
-            cboxYourLvl.SelectedItem = cboxYourLvl.Items.GetItemAt(0);
-            cboxTargetLvl.SelectedItem = cboxYourLvl.Items.GetItemAt(1);
+            SelectedStartStage = ArenaStages.FirstOrDefault();
+        }
+        private void FetchPossibleEndStages()
+        {
+            PossibleEndStages.Clear();
+            int stage = SelectedStartStage;
+            int maxStage = SelectedStartStage + 3;
+            do
+            {
+                if (ArenaStages.Contains(stage))
+                {
+                    PossibleEndStages.Add(stage);
+                }
+                stage++;
+
+            } while (stage <= maxStage);
+            SelectedEndStage = PossibleEndStages.LastOrDefault();
+        }
+        private void FetchAllLevelRanges()
+        {
+            LevelRanges.Clear();
+            foreach (var level in ExperienceForLevelTable.LevelRanges)
+            {
+                LevelRanges.Add(level);
+            }
+           SelectedStartLevel = LevelRanges.FirstOrDefault();
+        }
+        private void FetchPossibleTargetLevelRanges()
+        {
+            TargetLevelRanges.Clear();
+            int index = LevelRanges.IndexOf(SelectedStartLevel) + 1;
+            for (int i = index; i < LevelRanges.Count; i++)
+            {
+                TargetLevelRanges.Add(LevelRanges.ElementAt(i));
+            }
+            SelectedTargetLevel = TargetLevelRanges.FirstOrDefault();
         }
         private void CalculateExping()
         {
-            if (ValidateControls())
-            {
-                //ushort startLevel = Convert.ToUInt16(cboxYourLvl.Text);
-                //ushort targetLevel = Convert.ToUInt16(cboxTargetLvl.Text);
-                //ushort gainedExpPercentage = Convert.ToUInt16(slidGainedExp.Value);
                 var instanceExpingCalculator = new InstanceExpingCalculator();
-                var result = instanceExpingCalculator.CalculateExping(StartLevel, TargetLevel, GainedExpPercentage, ArenaEnabled, BaiumEnabled, AntharasEnabled, SelectedArenaRbCount, 0);
+                var result = instanceExpingCalculator.CalculateExping
+                    (SelectedStartLevel, 
+                    SelectedTargetLevel, 
+                    GainedExpPercentage,
+                    SelectedStartStage,
+                    SelectedEndStage,
+                    ArenaEnabled, 
+                    BaiumEnabled, 
+                    AntharasEnabled);
                 if (result != null)
                 {
-                    DisplayScrollCount(result);
-                    DisplayScrollPrices(result);
+                    ScrollsCount = m_ResultFormatter.ScrollsCount(result);
+                    MoneyForScrolls = m_ResultFormatter.ScrollPrices(result);
                 }
-                VisualizeResults(result);
-            }
-        }
-        private bool ValidateControls()
-        {
-            if (string.IsNullOrEmpty(cboxYourLvl.Text)) return false;
-            if (string.IsNullOrEmpty(cboxTargetLvl.Text)) return false;
-            //if (string.IsNullOrEmpty(SelectedArenaRbCount)) return false;
-
-            return true;
-        }
-
-        private void DisplayScrollCount(LevelingContainer result)
-        {
-            StringBuilder scrollPrices = new StringBuilder();
-            string delimeter = ", ";
-            if (result.HundertKkScrollNeeded > 0)
-            {
-                scrollPrices.Append($"100kk exp scrolls: [{result.HundertKkScrollNeeded}]");
-            }
-            if (result.FiftyKkScrollNeeded > 0)
-            {
-                if (scrollPrices.Length > 0)
-                {
-                    scrollPrices.Append(delimeter);
-                    scrollPrices.Append(Environment.NewLine);
-                }
-                scrollPrices.Append($"50kk exp scrolls: [{result.FiftyKkScrollNeeded}]");
-            }
-            if (result.TenKkScrollNeeded > 0)
-            {
-                if (scrollPrices.Length > 0)
-                {
-                    scrollPrices.Append(delimeter);
-                    scrollPrices.Append(Environment.NewLine);
-                }
-                scrollPrices.Append($"10kk exp scrolls: [{result.TenKkScrollNeeded}]");
-            }
-            lblScrollsNeeded.Content = scrollPrices.ToString();
-        }
-        private void DisplayScrollPrices(LevelingContainer result)
-        {
-            StringBuilder scrollPrices = new StringBuilder();
-            string delimeter = ", ";
-            if (result.HundertKkScrollNeeded > 0)
-                scrollPrices.Append($"{result.HundertKkScrollNeeded} scrolls x 500k = [{string.Format("{0,9:N0}", result.HundertKkScrollNeeded * ExpScrollPrices.hundertKkExpScrollPrice)} Aden]");
-            if (result.FiftyKkScrollNeeded > 0)
-            {
-                if (scrollPrices.Length > 0)
-                {
-                    scrollPrices.Append(delimeter);
-                    scrollPrices.Append(Environment.NewLine);
-                }
-                scrollPrices.Append($"{result.FiftyKkScrollNeeded} scrolls x 400k = [{string.Format("{0,9:N0}", result.FiftyKkScrollNeeded * ExpScrollPrices.fiftyKkExpScrollPrice)} Aden]");
-            }
-            if (result.TenKkScrollNeeded > 0)
-            {
-                if (scrollPrices.Length > 0)
-                {
-                    scrollPrices.Append(delimeter);
-                    scrollPrices.Append(Environment.NewLine);
-                }
-                scrollPrices.Append($"{result.TenKkScrollNeeded} scrolls x 100k = [{string.Format("{0,9:N0}", result.TenKkScrollNeeded * ExpScrollPrices.tenKkExpScrollPrice)} Aden]");
-            }
-            lblMoneyNeeded.Content = scrollPrices.ToString();
-        }
-        private void VisualizeResults(LevelingContainer result)
-        {
-            lblExpNeeded.Content = string.Format("{0,9:N0}", result?.TotalExperience);
-            lblWeeksNeeded.Content = string.Format("{0,2:N0}", result?.WeeklyCyclesNeeded);
-            lblRemainingExp.Content = string.Format("{0,9:N0}", result?.RemainingExperience);
-            lblMoneyTotal.Content = $"{string.Format("{0,9:N0}", result?.MoneyTotal)} Aden";
+                TotalExperience = m_ResultFormatter.TotalExperience(result);
+                WeeksCount = m_ResultFormatter.WeeksCount(result);
+                RemainingExperience = m_ResultFormatter.RemainingExperience(result);
+                MoneyTotal = m_ResultFormatter.MoneyTotal(result);
         }
 
         private void btCalculate_Click(object sender, RoutedEventArgs e)
