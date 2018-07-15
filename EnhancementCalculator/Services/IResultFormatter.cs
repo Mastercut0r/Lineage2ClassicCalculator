@@ -10,5 +10,6 @@ namespace EnhancementCalculator.Services
         string WeeksCount(LevelingContainer result);
         string RemainingExperience(LevelingContainer result);
         string MoneyTotal(LevelingContainer result);
+        string Experience(ulong result);
     }
 }

@@ -25,5 +25,8 @@
         <TabItem Header="Instance Experience Calculator">
             <local:InstanceExpCalculator Margin="5"/>
         </TabItem>
+        <TabItem Header="Scrolls to level converter ">
+            <local:ScrollToExpConverter Margin="5"/>
+        </TabItem>
     </TabControl>
 </Window>

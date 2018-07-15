@@ -27,14 +27,14 @@ namespace EnhancementCalculator.Services
         /// <param name="clanArena">The clan arena.</param>
         /// <returns>returns data container if arguments are valid. Otherwise returns light weight container with total experience only</returns>
         public LevelingContainer CalculateExping(
-            int startLevel, 
-            int targetLevel, 
+            int startLevel,
+            int targetLevel,
             int gainedExpPercentage,
             int startBossStage,
             int endBossStage,
-            bool isClanArena = false, 
-            bool isBaium = false, 
-            bool isAntharas = false, 
+            bool isClanArena = false,
+            bool isBaium = false,
+            bool isAntharas = false,
             int instanceEntranceFee = 0,
             IClanArena clanArena = null)
         {
@@ -54,9 +54,9 @@ namespace EnhancementCalculator.Services
 
             //var moneyTotal = CaclulateMoneyTotal(scrollContainer);
             return new LevelingContainer(
-                totalExperience, 
-                RemainingExperience, 
-                WeeklyCyclesNeeded, 
+                totalExperience,
+                RemainingExperience,
+                WeeklyCyclesNeeded,
                 ArenaRbKillCount,
                 scrollContainer);
         }
@@ -78,10 +78,10 @@ namespace EnhancementCalculator.Services
         }
         private IScrolls CalculateExpScrollsNeeded(
             ulong totalExp,
-            int startLevel, 
-            bool arena, 
-            bool baium, 
-            bool antharas, 
+            int startLevel,
+            bool arena,
+            bool baium,
+            bool antharas,
             int startBossStage,
             int endBossStage)
         {
@@ -156,6 +156,39 @@ namespace EnhancementCalculator.Services
                 return true;
             }
             return false;
+        }
+
+        public ICalculationResultMinimal ConvertScrollsToLevel(
+            int startLevel,
+            int gainedExpPercentage,
+            IScrolls scrolls)
+        {
+            int currentLevel = startLevel;
+            ulong expToConvert = scrolls.TotalExp;
+            ulong expOnLevel = CalculateGainedExpOnLevel(startLevel, gainedExpPercentage);
+            if (expToConvert==0)
+            {
+                return new ResultMinimal(startLevel, expOnLevel);
+            }
+            expToConvert += expOnLevel;
+            while(ExperienceForLevelTable.IsLevelUpPossible(currentLevel) && expToConvert >= ExperienceForLevelTable.ExperienceForLevel[currentLevel + 1])
+            {
+                currentLevel++;
+                expToConvert -= ExperienceForLevelTable.ExperienceForLevel[currentLevel];
+            };
+            return new ResultMinimal(currentLevel, expToConvert);
+        }
+
+        //private ulong CalculateExpFromScrolls(
+        //    int tenKkExpScrolls,
+        //    int fiftyKkExpScrolls,
+        //    int hundredKkExpScrolls)
+        //{
+        //    return (uint)tenKkExpScrolls * ScrollConstants.tenMillExp + (uint)fiftyKkExpScrolls * ScrollConstants.fiftyMillExp + (uint)hundredKkExpScrolls * ScrollConstants.hundredMillExp;
+        //}
+        private ulong CalculateGainedExpOnLevel(int level, int gainedExpPercentage)
+        {
+            return (ulong)(ExperienceForLevelTable.ExperienceForLevel[(ushort)(level + 1)] * ((double)gainedExpPercentage / 100));
         }
     }
 }

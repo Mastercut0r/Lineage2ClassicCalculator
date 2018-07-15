@@ -16,7 +16,7 @@ namespace EnhancementCalculator.Services
         /// <param name="isBaium">if set to <c>true</c> [is baium].</param>
         /// <param name="isAntharas">if set to <c>true</c> [is antharas].</param>
         /// <param name="instanceEntranceFee">The instance entrance fee.</param>
-        /// <param name="clanArena">The clan arena.</param>
+        /// <param name="clanArena">The clan arena. For unit testing purposes</param>
         /// <returns>LevelingContainer.</returns>
         LevelingContainer CalculateExping(
             int startLevel,
@@ -29,5 +29,17 @@ namespace EnhancementCalculator.Services
             bool isAntharas = false,
             int instanceEntranceFee = 0,
             IClanArena clanArena = null);
+
+        /// <summary>
+        /// Converts the scrolls to level.
+        /// </summary>
+        /// <param name="startLevel">The start level.</param>
+        /// <param name="gainedExpPercentage">The gained exp percentage.</param>
+        /// <param name="scrolls">The scrolls.</param>
+        /// <returns>ICalculationResultMinimal.</returns>
+        ICalculationResultMinimal ConvertScrollsToLevel(
+            int startLevel,
+            int gainedExpPercentage,
+            IScrolls scrolls);
     }
 }

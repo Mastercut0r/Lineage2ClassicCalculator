@@ -120,7 +120,7 @@ namespace EnhancementCalculator
 
         //public ObservableCollection<int> m_LevelRanges { get; set; }
         private IResultFormatter m_ResultFormatter = new ResultFormatter();
-
+        private IExpingCalculatorFactory m_CalculatorFactory = new CalculatorFactory();
         public InstanceExpCalculator()
         {
             LevelRanges = new List<int>();
@@ -134,6 +134,15 @@ namespace EnhancementCalculator
             FetchStartBossStages();
             FetchPossibleEndStages();
         }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InstanceExpCalculator"/> class. For unit testing purposes only
+        /// </summary>
+        /// <param name="calculatorFactory">The calculator factory.</param>
+        public InstanceExpCalculator(IExpingCalculatorFactory calculatorFactory = null)
+        {
+            m_CalculatorFactory = calculatorFactory;
+        }
+
         private void FetchStartBossStages()
         {
             foreach (var stage in ArenaRewardPerLevelRange.ArenaStages)
@@ -179,7 +188,7 @@ namespace EnhancementCalculator
         }
         private void CalculateExping()
         {
-                var instanceExpingCalculator = new InstanceExpingCalculator();
+                var instanceExpingCalculator = m_CalculatorFactory.CreateExpingCalculator();
                 var result = instanceExpingCalculator.CalculateExping
                     (SelectedStartLevel, 
                     SelectedTargetLevel, 

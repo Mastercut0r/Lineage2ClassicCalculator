@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="EnhancementCalculator.ScrollToExpConverter"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d">
+    <Grid>
+        <DockPanel VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5" DockPanel.Dock="Top">
+                <Label Content="Your lvl:"/>
+                <ComboBox Width="50" Margin="5,0,10,0" ItemsSource="{Binding LevelRanges}" SelectedValue="{Binding SelectedStartLevel}"/>
+                <Button Width="80" Margin="40,0,0,0" Content="Convert" Click="Button_Click"/>
+            </StackPanel>
+            <GroupBox Header="Gained Experience" DockPanel.Dock="Top">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                    <Slider Name="slidGainedExp" Maximum="100" TickPlacement="BottomRight" TickFrequency="1" MinWidth="300" IsSnapToTickEnabled="True" Value="{Binding GainedExpPercentage}"/>
+                    <TextBox Text="{Binding ElementName=slidGainedExp, Path=Value, UpdateSourceTrigger=PropertyChanged}" Width="40" TextAlignment="Center" Margin="5,0,0,0"/>
+                    <Label Content="%"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="My Scrolls" DockPanel.Dock="Top">
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                    <Label Content="10kk exp:" Margin="10,0,0,0"/>
+                    <TextBox Width="40" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding TenKkScrolls}"/>
+                    <Label Content="50kk exp:" Margin="10,0,0,0"/>
+                    <TextBox Width="40" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding FiftyKkScrolls}"/>
+                    <Label Content="100kk exp:" Margin="10,0,0,0"/>
+                    <TextBox Width="40" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding HundredKkScrolls}"/>
+                    <Label Content="Experience total:" Margin="20,0,0,0"/>
+                    <Label Content="{Binding TotalExpToConvert}" Margin="0,0,0,0" FontWeight="Bold"/>
+                </StackPanel>
+            </GroupBox>
+            <Separator DockPanel.Dock="Top" Margin="10"/>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" DockPanel.Dock="Top" Height="40">
+                <Label Content="Result level:" FontSize="14"/>
+                <Label Margin="0,0,10,0" FontWeight="Bold" FontSize="14" Content="{Binding ResultLevel}"/>
+                <Label Content="Result experience on lvl:" FontSize="14"/>
+                <Label Margin="0,0,10,0" FontWeight="Bold" FontSize="14" Content="{Binding ExperienceOnLevelPercentage}"/>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</UserControl>

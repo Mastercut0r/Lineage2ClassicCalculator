@@ -73,6 +73,11 @@ namespace EnhancementCalculator.Services
             return scrollPrices.ToString();
         }
 
+        public string Experience(ulong result)
+        {
+            return string.Format("{0,9:N0}", result);
+        }
+
         public string TotalExperience(LevelingContainer result)
         {
             return string.Format("{0,9:N0}", result?.TotalExperience);
