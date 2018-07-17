@@ -303,4 +303,40 @@
   <data name="SpellBreaker" xml:space="preserve">
     <value>Рассеиватель Заклинаний</value>
   </data>
+  <data name="Bonebreaker" xml:space="preserve">
+    <value>Костолом</value>
+  </data>
+  <data name="Claymore" xml:space="preserve">
+    <value>Клеймор</value>
+  </data>
+  <data name="CursedMaingauche" xml:space="preserve">
+    <value>Проклятая Дага</value>
+  </data>
+  <data name="DemonFangs" xml:space="preserve">
+    <value>Клыки Демона</value>
+  </data>
+  <data name="DualTopD" xml:space="preserve">
+    <value>Меч Рыцаря*Меч Эльфов</value>
+  </data>
+  <data name="GiantsHammer" xml:space="preserve">
+    <value>Молот Гигантов</value>
+  </data>
+  <data name="Glaive" xml:space="preserve">
+    <value>Глефа</value>
+  </data>
+  <data name="LightCrossbow" xml:space="preserve">
+    <value>Легкий Лук</value>
+  </data>
+  <data name="SpikedJamadhar" xml:space="preserve">
+    <value>Шипованный Джамадхар</value>
+  </data>
+  <data name="StaffOfLife" xml:space="preserve">
+    <value>Посох Жизни</value>
+  </data>
+  <data name="SwordOfGiants" xml:space="preserve">
+    <value>Меч Гигантов</value>
+  </data>
+  <data name="Tarbar" xml:space="preserve">
+    <value>Тарбар</value>
+  </data>
 </root>

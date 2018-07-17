@@ -7,6 +7,8 @@ namespace EnhancementCalculator.Constants
     {
         private static Dictionary<string, IWeapon> TwoHandedSwords = new Dictionary<string, IWeapon>()
         {
+            {Resource.SwordOfGiants, new Weapon(Resource.SwordOfGiants, WeaponType.PhysicalWeapon, WeaponClass.TwohandedSwords, WeaponBaseStats.SwordOfGiants) },
+            {Resource.Claymore, new Weapon(Resource.Claymore, WeaponType.PhysicalWeapon, WeaponClass.TwohandedSwords, WeaponBaseStats.Claymore) },
             {Resource.PaagrioSword, new Weapon(Resource.PaagrioSword, WeaponType.PhysicalWeapon, WeaponClass.TwohandedSwords, WeaponBaseStats.PaagrioSword)},
             {Resource.BerserkerSword, new Weapon(Resource.BerserkerSword, WeaponType.PhysicalWeapon, WeaponClass.TwohandedSwords, WeaponBaseStats.BerserkerSword)},
             {Resource.Greatsword, new Weapon(Resource.Greatsword, WeaponType.PhysicalWeapon, WeaponClass.TwohandedSwords, WeaponBaseStats.Greatsword)},
@@ -17,6 +19,7 @@ namespace EnhancementCalculator.Constants
         };
         private static Dictionary<string, IWeapon> TwohandedBlunts = new Dictionary<string, IWeapon>()
         {
+            {Resource.GiantsHammer, new Weapon(Resource.GiantsHammer, WeaponType.MageWeapon, WeaponClass.TwohandedBlunts, WeaponBaseStats.GiantsHammer)},
             {Resource.DemonStaff, new Weapon(Resource.DemonStaff, WeaponType.MageWeapon, WeaponClass.TwohandedBlunts, WeaponBaseStats.DemonStaff)},
             {Resource.StaffOfEvilSpirit, new Weapon(Resource.StaffOfEvilSpirit, WeaponType.MageWeapon, WeaponClass.TwohandedBlunts, WeaponBaseStats.StaffOfEvilSpirit)},
             {Resource.GnomeHammer, new Weapon(Resource.GnomeHammer, WeaponType.PhysicalWeapon, WeaponClass.TwohandedBlunts, WeaponBaseStats.GnomeHammer)},
@@ -30,6 +33,7 @@ namespace EnhancementCalculator.Constants
         };
         private static Dictionary<string, IWeapon> OnehandedSwords = new Dictionary<string, IWeapon>()
         {
+            {Resource.DemonFangs, new Weapon(Resource.DemonFangs, WeaponType.MageWeapon, WeaponClass.OnehandedSwords, WeaponBaseStats.DemonFangs)},
             {Resource.MysticalSword, new Weapon(Resource.MysticalSword, WeaponType.MageWeapon, WeaponClass.OnehandedSwords, WeaponBaseStats.MysticalSword)},
             {Resource.Homuncul, new Weapon(Resource.Homuncul, WeaponType.MageWeapon, WeaponClass.OnehandedSwords, WeaponBaseStats.Homuncul)},
             {Resource.Katana, new Weapon(Resource.Katana, WeaponType.PhysicalWeapon, WeaponClass.OnehandedSwords, WeaponBaseStats.Katana)},
@@ -46,6 +50,9 @@ namespace EnhancementCalculator.Constants
         };
         private static Dictionary<string, IWeapon> OnehandedBlunts = new Dictionary<string, IWeapon>()
         {
+            {Resource.StaffOfLife, new Weapon(Resource.StaffOfLife, WeaponType.MageWeapon, WeaponClass.OnehandedBlunts, WeaponBaseStats.StaffOfLife)},
+            {Resource.Tarbar, new Weapon(Resource.Tarbar, WeaponType.PhysicalWeapon, WeaponClass.OnehandedBlunts, WeaponBaseStats.Tarbar)},
+            {Resource.Bonebreaker, new Weapon(Resource.Bonebreaker, WeaponType.PhysicalWeapon, WeaponClass.OnehandedBlunts, WeaponBaseStats.Bonebreaker)},
             {Resource.EclipseAxe, new Weapon(Resource.EclipseAxe, WeaponType.MageWeapon, WeaponClass.OnehandedBlunts, WeaponBaseStats.EclipseAxe)},
             {Resource.SpellBreaker, new Weapon(Resource.SpellBreaker, WeaponType.MageWeapon, WeaponClass.OnehandedBlunts, WeaponBaseStats.SpellBreaker)},
             {Resource.KaimVanul, new Weapon(Resource.KaimVanul, WeaponType.MageWeapon, WeaponClass.OnehandedBlunts, WeaponBaseStats.KaimVanul)},
@@ -58,6 +65,7 @@ namespace EnhancementCalculator.Constants
         };
         private static Dictionary<string, IWeapon> Daggers = new Dictionary<string, IWeapon>()
         {
+            {Resource.CursedMaingauche, new Weapon(Resource.CursedMaingauche, WeaponType.PhysicalWeapon, WeaponClass.Daggers, WeaponBaseStats.CursedMaingauche)},
             {Resource.HellKnife, new Weapon(Resource.HellKnife, WeaponType.MageWeapon, WeaponClass.Daggers, WeaponBaseStats.HellKnife)},
             {Resource.CrystalDagger, new Weapon(Resource.CrystalDagger, WeaponType.PhysicalWeapon, WeaponClass.Daggers, WeaponBaseStats.CrystalDagger)},
             {Resource.DemonDagger, new Weapon(Resource.DemonDagger, WeaponType.PhysicalWeapon, WeaponClass.Daggers, WeaponBaseStats.DemonDagger)},
@@ -66,6 +74,7 @@ namespace EnhancementCalculator.Constants
         };
         private static Dictionary<string, IWeapon> Fists = new Dictionary<string, IWeapon>()
         {
+            {Resource.SpikedJamadhar, new Weapon(Resource.SpikedJamadhar, WeaponType.PhysicalWeapon, WeaponClass.Fists, WeaponBaseStats.SpikedJamadhar)},
             {Resource.GreatPata, new Weapon(Resource.GreatPata, WeaponType.PhysicalWeapon, WeaponClass.Fists, WeaponBaseStats.GreatPata)},
             {Resource.BellionsCestus, new Weapon(Resource.BellionsCestus, WeaponType.PhysicalWeapon, WeaponClass.Fists, WeaponBaseStats.BellionsCestus)},
             {Resource.DragonGrinder, new Weapon(Resource.DragonGrinder, WeaponType.PhysicalWeapon, WeaponClass.Fists, WeaponBaseStats.DragonGrinder)},
@@ -73,6 +82,7 @@ namespace EnhancementCalculator.Constants
         };
         private static Dictionary<string, IWeapon> Bows = new Dictionary<string, IWeapon>()
         {
+            {Resource.LightCrossbow, new Weapon(Resource.LightCrossbow, WeaponType.PhysicalWeapon, WeaponClass.Bows, WeaponBaseStats.LightCrossbow)},
             {Resource.EminenceBow, new Weapon(Resource.EminenceBow, WeaponType.PhysicalWeapon, WeaponClass.Bows, WeaponBaseStats.EminenceBow)},
             {Resource.BoP, new Weapon(Resource.BoP, WeaponType.PhysicalWeapon, WeaponClass.Bows, WeaponBaseStats.BoP)},
             {Resource.CarnageBow, new Weapon(Resource.CarnageBow, WeaponType.PhysicalWeapon, WeaponClass.Bows, WeaponBaseStats.CarnageBow)},
@@ -81,6 +91,7 @@ namespace EnhancementCalculator.Constants
         };
         private static Dictionary<string, IWeapon> DualSwords = new Dictionary<string, IWeapon>()
         {
+            {Resource.DualTopD, new Weapon(Resource.DualTopD, WeaponType.PhysicalWeapon, WeaponClass.DualSwords, WeaponBaseStats.DualTopD)},
             {Resource.DualKatana, new Weapon(Resource.DualKatana, WeaponType.PhysicalWeapon, WeaponClass.DualSwords, WeaponBaseStats.DualKatana)},
             {Resource.DualSLS, new Weapon(Resource.DualSLS, WeaponType.PhysicalWeapon, WeaponClass.DualSwords, WeaponBaseStats.DualSLS)},
             {Resource.DualDamaskus, new Weapon(Resource.DualDamaskus, WeaponType.PhysicalWeapon, WeaponClass.DualSwords, WeaponBaseStats.DualDamaskus)},
@@ -88,6 +99,7 @@ namespace EnhancementCalculator.Constants
         };
         private static Dictionary<string, IWeapon> Polearms = new Dictionary<string, IWeapon>()
         {
+            {Resource.Glaive, new Weapon(Resource.Glaive, WeaponType.PhysicalWeapon, WeaponClass.Polearms, WeaponBaseStats.Glaive)},
             {Resource.OrcPolearm, new Weapon(Resource.OrcPolearm, WeaponType.PhysicalWeapon, WeaponClass.Polearms, WeaponBaseStats.OrcPolearm)},
             {Resource.Pike, new Weapon(Resource.Pike, WeaponType.PhysicalWeapon, WeaponClass.Polearms, WeaponBaseStats.Pike)},
             {Resource.Halberd, new Weapon(Resource.Halberd, WeaponType.PhysicalWeapon, WeaponClass.Polearms, WeaponBaseStats.Halberd)},

@@ -7,7 +7,7 @@
     <Grid>
         <DockPanel VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5" DockPanel.Dock="Top">
-                <Label Content="Your lvl:"/>
+                <Label Content="Your level:"/>
                 <ComboBox Width="50" Margin="5,0,10,0" ItemsSource="{Binding LevelRanges}" SelectedValue="{Binding SelectedStartLevel}"/>
                 <Button Width="80" Margin="40,0,0,0" Content="Convert" Click="Button_Click"/>
             </StackPanel>
