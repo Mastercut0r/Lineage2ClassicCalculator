@@ -31,6 +31,7 @@
         <GroupBox Header="Epic Bosses" DockPanel.Dock="Top">
             <StackPanel VerticalAlignment="Stretch" Orientation="Horizontal" Height="25">
                 <CheckBox Content="Baium" Margin="5,0,0,0" VerticalAlignment="Center" IsChecked="{Binding BaiumEnabled}"/>
+                <CheckBox Content="Zaken" Margin="5,0,0,0" VerticalAlignment="Center" IsChecked="{Binding ZakenEnabled}"/>
                 <CheckBox Content="Antharas" Margin="5,0,0,0" VerticalAlignment="Center" IsChecked="{Binding AntharasEnabled}"/>
             </StackPanel>
         </GroupBox>

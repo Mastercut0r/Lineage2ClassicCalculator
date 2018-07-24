@@ -47,7 +47,12 @@ namespace EnhancementCalculator.Constants
                {77,  1175470061},
                {78,  2233393116},
                {79,  6700179347},
-               {80,  22333931158}
+               {80,  22333931158},
+               {81,  111669655790},
+               {82,  129707364905},
+               {83,  174964954919},
+               {84,  218720332702},
+               {85,  273117371391}
         };
         public static bool IsLevelUpPossible(int currentLevel)
         {

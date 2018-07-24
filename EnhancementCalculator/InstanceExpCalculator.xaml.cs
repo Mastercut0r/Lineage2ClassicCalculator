@@ -15,6 +15,7 @@ namespace EnhancementCalculator
     {
         public bool ArenaEnabled { get; set; }
         public bool BaiumEnabled { get; set; }
+        public bool ZakenEnabled { get; set; }
         public bool AntharasEnabled { get; set; }
 
         public List<int> LevelRanges { get; set; }
@@ -196,7 +197,8 @@ namespace EnhancementCalculator
                     SelectedStartStage,
                     SelectedEndStage,
                     ArenaEnabled, 
-                    BaiumEnabled, 
+                    BaiumEnabled,
+                    ZakenEnabled,
                     AntharasEnabled);
                 if (result != null)
                 {

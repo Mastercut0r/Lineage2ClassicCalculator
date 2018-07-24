@@ -30,7 +30,7 @@ namespace EnhancementCalculator.Models
             }
             else
             {
-                GainedExpPercentageOnLevel = 100;
+                GainedExpPercentageOnLevel = 0;
             }
         }
     }

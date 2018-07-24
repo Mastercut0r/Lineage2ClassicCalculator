@@ -14,6 +14,7 @@ namespace EnhancementCalculator.Services
         /// <param name="endBossStage">The end boss stage.</param>
         /// <param name="isClanArena">if set to <c>true</c> [is clan arena].</param>
         /// <param name="isBaium">if set to <c>true</c> [is baium].</param>
+        /// <param name="isZaken">if set to <c>true</c> [is zaken].</param>
         /// <param name="isAntharas">if set to <c>true</c> [is antharas].</param>
         /// <param name="instanceEntranceFee">The instance entrance fee.</param>
         /// <param name="clanArena">The clan arena. For unit testing purposes</param>
@@ -26,6 +27,7 @@ namespace EnhancementCalculator.Services
             int endBossStage,
             bool isClanArena = false,
             bool isBaium = false,
+            bool isZaken = false,
             bool isAntharas = false,
             int instanceEntranceFee = 0,
             IClanArena clanArena = null);

@@ -17,8 +17,12 @@ namespace EnhancementCalculator.Constants
         public static IScrolls fiftyMil = new Scrolls(0,1,0);
         public static IScrolls eightyMil = new Scrolls(3,1,0);
         public static IScrolls hundredMil = new Scrolls(0,0,1);
+        public static IScrolls hundredTwentyMil = new Scrolls(2, 0, 1);
         public static IScrolls hundredFortyMil = new Scrolls(4,0,1);
         public static IScrolls twoHundredMil = new Scrolls(0,0,2);
         public static IScrolls threeHundredMil = new Scrolls(0,0,3);
+        public static IScrolls threeHundredFiftyMil = new Scrolls(0,1,3);
+        public static IScrolls fourHundredMil = new Scrolls(0,0,4);
+        public static IScrolls sixHundredMil = new Scrolls(0,0,6);
     }
 }
