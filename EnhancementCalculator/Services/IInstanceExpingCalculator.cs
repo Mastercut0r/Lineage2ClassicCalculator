@@ -16,6 +16,7 @@ namespace EnhancementCalculator.Services
         /// <param name="isBaium">if set to <c>true</c> [is baium].</param>
         /// <param name="isZaken">if set to <c>true</c> [is zaken].</param>
         /// <param name="isAntharas">if set to <c>true</c> [is antharas].</param>
+        /// <param name="isDailyQuest">if set to <c>true</c> [is DailyQuest].</param>
         /// <param name="instanceEntranceFee">The instance entrance fee.</param>
         /// <param name="clanArena">The clan arena. For unit testing purposes</param>
         /// <returns>LevelingContainer.</returns>
@@ -29,8 +30,10 @@ namespace EnhancementCalculator.Services
             bool isBaium = false,
             bool isZaken = false,
             bool isAntharas = false,
+            bool isDailyQuest = false,
             int instanceEntranceFee = 0,
-            IClanArena clanArena = null);
+            IClanArena clanArena = null,
+            IDailyQuests dailyQuests = null);
 
         /// <summary>
         /// Converts the scrolls to level.

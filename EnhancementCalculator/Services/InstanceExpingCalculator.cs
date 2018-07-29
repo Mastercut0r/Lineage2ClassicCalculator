@@ -11,6 +11,7 @@ namespace EnhancementCalculator.Services
         private ulong ExperienceGainedOnLevel { get; set; }
         private int CurrentLevel { get; set; }
         private IClanArena m_ClanArena;
+        private IDailyQuests m_DailyQuests;
 
         /// <summary>
         /// Calculates all relevant data and puts them in a container
@@ -24,8 +25,10 @@ namespace EnhancementCalculator.Services
         /// <param name="isBaium">if set to <c>true</c> [is baium].</param>
         /// <param name="isZaken">if set to <c>true</c> [is zaken].</param>
         /// <param name="isAntharas">if set to <c>true</c> [is antharas].</param>
+        /// <param name="isDailyQuest">if set to <c>true</c> [is DailyQuest].</param>
         /// <param name="instanceEntranceFee">The instance entrance fee.</param>
         /// <param name="clanArena">The clan arena.</param>
+        /// <param name="dailyQuests">The daily Quests.</param>
         /// <returns>returns data container if arguments are valid. Otherwise returns light weight container with total experience only</returns>
         public LevelingContainer CalculateExping(
             int startLevel,
@@ -37,13 +40,16 @@ namespace EnhancementCalculator.Services
             bool isBaium = false,
             bool isZaken = false,
             bool isAntharas = false,
+            bool isDailyQuest = false,
             int instanceEntranceFee = 0,
-            IClanArena clanArena = null)
+            IClanArena clanArena = null,
+            IDailyQuests dailyQuests = null)
         {
             if (startLevel > targetLevel) return null;
             ulong totalExperience = CalculateTotalExp(startLevel, targetLevel, gainedExpPercentage);
-            if (!isClanArena && !isBaium && !isZaken && !isAntharas) return LevelingContainer.CreateExpContainer(totalExperience);
+            if (!isClanArena && !isBaium && !isZaken && !isAntharas && !isDailyQuest) return LevelingContainer.CreateExpContainer(totalExperience);
             m_ClanArena = clanArena ?? new ClanArena();
+            m_DailyQuests = dailyQuests ?? new DailyQuests();
             var scrollContainer = CalculateExpScrollsNeeded
                 (
                 totalExperience,
@@ -52,6 +58,7 @@ namespace EnhancementCalculator.Services
                 isBaium,
                 isZaken,
                 isAntharas,
+                isDailyQuest,
                 startBossStage,
                 endBossStage);
 
@@ -86,6 +93,7 @@ namespace EnhancementCalculator.Services
             bool baium,
             bool zaken,
             bool antharas,
+            bool dailyQuest,
             int startBossStage,
             int endBossStage)
         {
@@ -106,13 +114,22 @@ namespace EnhancementCalculator.Services
                     calculationNeeded = false;//ToDo check if correct!!
                 var tempExpMark = RemainingExperience;
                 WeeklyCyclesNeeded += 1;
+                if (dailyQuest && ExperienceForLevelTable.IsLevelUpPossible(CurrentLevel))
+                {
+                    Scrolls rewards = (Scrolls)m_DailyQuests.WeeklyReward(CurrentLevel);
+                    if (RemainingExperience > rewards.TotalExp)
+                    {
+                        collectedScrolls = collectedScrolls + rewards;
+                        RemainingExperience -= rewards.TotalExp;
+                        LevelUp(rewards.TotalExp);
+                    }
+                }
                 if (antharas && ExperienceForLevelTable.IsLevelUpPossible(CurrentLevel))
                 {
                     if (InstanceExpPerLevelTable.AntharasExpPerLevelTable.ContainsKey(CurrentLevel)
                         && RemainingExperience > InstanceExpPerLevelTable.AntharasExpPerLevelTable[CurrentLevel].TotalExp)
                     {
                         Scrolls rewards = (Scrolls)InstanceExpPerLevelTable.AntharasExpPerLevelTable[CurrentLevel];
-                        //scrollsContainer = CalculatePricesPerScrollType(InstanceTypes.Antharas, scrollsContainer);
                         collectedScrolls = collectedScrolls + rewards;
                         RemainingExperience -= rewards.TotalExp;
                         LevelUp(rewards.TotalExp);
@@ -125,7 +142,6 @@ namespace EnhancementCalculator.Services
                     {
                         ArenaRbKillCount += endBossStage - startBossStage;
                         collectedScrolls = collectedScrolls + rewards;
-                        //scrollsContainer = CalculatePricesPerScrollType(InstanceTypes.ClanArena, scrollsContainer, arenaRbCount);
                         RemainingExperience -= rewards.TotalExp;
                         LevelUp(rewards.TotalExp);
                     }
@@ -135,7 +151,6 @@ namespace EnhancementCalculator.Services
                     if (InstanceExpPerLevelTable.BaiumExpPerLevelTable.ContainsKey(CurrentLevel)
                         && RemainingExperience > InstanceExpPerLevelTable.BaiumExpPerLevelTable[CurrentLevel].TotalExp)
                     {
-                        //scrollsContainer = CalculatePricesPerScrollType(InstanceTypes.Baium, scrollsContainer);
                         Scrolls rewards = (Scrolls)InstanceExpPerLevelTable.BaiumExpPerLevelTable[CurrentLevel];
                         collectedScrolls = collectedScrolls + rewards;
                         RemainingExperience -= rewards.TotalExp;
@@ -147,7 +162,6 @@ namespace EnhancementCalculator.Services
                     if (InstanceExpPerLevelTable.ZakenExpPerLevelTable.ContainsKey(CurrentLevel)
                         && RemainingExperience > InstanceExpPerLevelTable.ZakenExpPerLevelTable[CurrentLevel].TotalExp)
                     {
-                        //scrollsContainer = CalculatePricesPerScrollType(InstanceTypes.Baium, scrollsContainer);
                         Scrolls rewards = (Scrolls)InstanceExpPerLevelTable.ZakenExpPerLevelTable[CurrentLevel];
                         collectedScrolls = collectedScrolls + rewards;
                         RemainingExperience -= rewards.TotalExp;

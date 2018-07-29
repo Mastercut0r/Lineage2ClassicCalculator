@@ -17,6 +17,7 @@ namespace EnhancementCalculator
         public bool BaiumEnabled { get; set; }
         public bool ZakenEnabled { get; set; }
         public bool AntharasEnabled { get; set; }
+        public bool DailyQuestsEnabled { get; set; }
 
         public List<int> LevelRanges { get; set; }
         public ObservableCollection<int> TargetLevelRanges { get; set; }
@@ -199,7 +200,8 @@ namespace EnhancementCalculator
                     ArenaEnabled, 
                     BaiumEnabled,
                     ZakenEnabled,
-                    AntharasEnabled);
+                    AntharasEnabled,
+                    DailyQuestsEnabled);
                 if (result != null)
                 {
                     ScrollsCount = m_ResultFormatter.ScrollsCount(result);
