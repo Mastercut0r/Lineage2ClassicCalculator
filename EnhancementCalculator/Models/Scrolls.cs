@@ -34,11 +34,6 @@ namespace EnhancementCalculator.Models
             return (uint)TenKkScrollCount * ScrollConstants.tenMilScrollPrice + (uint)FiftyKkScrollCount * ScrollConstants.fiftyMilScrollPrice + (uint)HundredKkScrollCount * ScrollConstants.hundredMilScrollPrice;
         }
 
-        public ulong Add(IScrolls scrolls)
-        {
-            throw new NotImplementedException();
-        }
-
         public static Scrolls operator+(Scrolls firstReward, Scrolls secondReward)
         {
             int ten = firstReward.TenKkScrollCount + secondReward.TenKkScrollCount;

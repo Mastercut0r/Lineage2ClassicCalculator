@@ -30,11 +30,5 @@
         /// </summary>
         /// <value>The total money.</value>
         ulong TotalMoney { get; }
-        /// <summary>
-        /// Adds scrolls container with its content.
-        /// </summary>
-        /// <param name="scrolls">The scrolls to add.</param>
-        /// <returns>System.UInt64.</returns>
-        ulong Add(IScrolls scrolls);
     }
 }

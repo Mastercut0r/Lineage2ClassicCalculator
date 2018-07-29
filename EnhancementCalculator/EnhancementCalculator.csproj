@@ -82,6 +82,7 @@
     <Compile Include="Constants\ExperienceForLevelTable.cs" />
     <Compile Include="Constants\WeaponsTable.cs" />
     <Compile Include="Constants\WeaponClass.cs" />
+    <Compile Include="Models\DailyScrolls.cs" />
     <Compile Include="Models\ResultMinimal.cs" />
     <Compile Include="Models\Scrolls.cs" />
     <Compile Include="Models\ClanArena.cs" />
