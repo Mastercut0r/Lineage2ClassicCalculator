@@ -9,5 +9,6 @@ namespace EnhancementCalculator.Models
     public interface IDailyQuests
     {
         IScrolls WeeklyReward(int level, int questAmmountPerWeek = 7);
+        IScrolls DailyReward(int level);
     }
 }

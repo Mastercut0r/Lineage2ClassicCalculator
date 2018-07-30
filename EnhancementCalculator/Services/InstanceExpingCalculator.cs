@@ -62,7 +62,6 @@ namespace EnhancementCalculator.Services
                 startBossStage,
                 endBossStage);
 
-            //var moneyTotal = CaclulateMoneyTotal(scrollContainer);
             return new LevelingContainer(
                 totalExperience,
                 RemainingExperience,
@@ -97,13 +96,7 @@ namespace EnhancementCalculator.Services
             int startBossStage,
             int endBossStage)
         {
-            //if (!antharas && !arena && !baium)
-            //    return Scrolls.CreateEmptyContainer();
             CurrentLevel = startLevel;
-            //int hundertKkScrollNeeded = 0;
-            //int fiftyKkScrollNeeded = 0;
-            //int tenKkScrollNeeded = 0;
-            //var scrollsContainer = (tenKkScrollNeeded, fiftyKkScrollNeeded, hundertKkScrollNeeded);
             Scrolls collectedScrolls = (Scrolls)Scrolls.CreateEmptyContainer();
             RemainingExperience = totalExp;
             WeeklyCyclesNeeded = 0;
@@ -114,58 +107,51 @@ namespace EnhancementCalculator.Services
                     calculationNeeded = false;//ToDo check if correct!!
                 var tempExpMark = RemainingExperience;
                 WeeklyCyclesNeeded += 1;
-                if (dailyQuest && ExperienceForLevelTable.IsLevelUpPossible(CurrentLevel))
+                if (Verify(dailyQuest))
                 {
-                    Scrolls rewards = (Scrolls)m_DailyQuests.WeeklyReward(CurrentLevel);
-                    if (RemainingExperience > rewards.TotalExp)
+                    for (int day = 0; day < 7; day++)
                     {
-                        collectedScrolls = collectedScrolls + rewards;
-                        RemainingExperience -= rewards.TotalExp;
-                        LevelUp(rewards.TotalExp);
+                        Scrolls rewards = (Scrolls)m_DailyQuests.DailyReward(CurrentLevel);
+                        if (RemainingExperience > rewards.TotalExp)
+                        {
+                            collectedScrolls = ApplyScrolls(collectedScrolls, rewards);
+                        }
                     }
                 }
-                if (antharas && ExperienceForLevelTable.IsLevelUpPossible(CurrentLevel))
+                if (Verify(antharas))
                 {
                     if (InstanceExpPerLevelTable.AntharasExpPerLevelTable.ContainsKey(CurrentLevel)
                         && RemainingExperience > InstanceExpPerLevelTable.AntharasExpPerLevelTable[CurrentLevel].TotalExp)
                     {
                         Scrolls rewards = (Scrolls)InstanceExpPerLevelTable.AntharasExpPerLevelTable[CurrentLevel];
-                        collectedScrolls = collectedScrolls + rewards;
-                        RemainingExperience -= rewards.TotalExp;
-                        LevelUp(rewards.TotalExp);
+                        collectedScrolls = ApplyScrolls(collectedScrolls, rewards);
                     }
                 }
-                if (arena && ExperienceForLevelTable.IsLevelUpPossible(CurrentLevel))
+                if (Verify(arena))
                 {
                     Scrolls rewards = (Scrolls)m_ClanArena.Reward(CurrentLevel, startBossStage, endBossStage);
                     if (RemainingExperience > rewards.TotalExp)
                     {
                         ArenaRbKillCount += endBossStage - startBossStage;
-                        collectedScrolls = collectedScrolls + rewards;
-                        RemainingExperience -= rewards.TotalExp;
-                        LevelUp(rewards.TotalExp);
+                        collectedScrolls = ApplyScrolls(collectedScrolls, rewards);
                     }
                 }
-                if (baium && ExperienceForLevelTable.IsLevelUpPossible(CurrentLevel))
+                if (Verify(baium))
                 {
                     if (InstanceExpPerLevelTable.BaiumExpPerLevelTable.ContainsKey(CurrentLevel)
                         && RemainingExperience > InstanceExpPerLevelTable.BaiumExpPerLevelTable[CurrentLevel].TotalExp)
                     {
                         Scrolls rewards = (Scrolls)InstanceExpPerLevelTable.BaiumExpPerLevelTable[CurrentLevel];
-                        collectedScrolls = collectedScrolls + rewards;
-                        RemainingExperience -= rewards.TotalExp;
-                        LevelUp(rewards.TotalExp);
+                        collectedScrolls = ApplyScrolls(collectedScrolls, rewards);
                     }
                 }
-                if (zaken && ExperienceForLevelTable.IsLevelUpPossible(CurrentLevel))
+                if (Verify(zaken))
                 {
                     if (InstanceExpPerLevelTable.ZakenExpPerLevelTable.ContainsKey(CurrentLevel)
                         && RemainingExperience > InstanceExpPerLevelTable.ZakenExpPerLevelTable[CurrentLevel].TotalExp)
                     {
                         Scrolls rewards = (Scrolls)InstanceExpPerLevelTable.ZakenExpPerLevelTable[CurrentLevel];
-                        collectedScrolls = collectedScrolls + rewards;
-                        RemainingExperience -= rewards.TotalExp;
-                        LevelUp(rewards.TotalExp);
+                        collectedScrolls = ApplyScrolls(collectedScrolls, rewards);
                     }
                 }
                 if (tempExpMark - RemainingExperience == 0)
@@ -176,6 +162,20 @@ namespace EnhancementCalculator.Services
             }
             return collectedScrolls;
         }
+
+        private bool Verify(bool instance)
+        {
+            return instance && ExperienceForLevelTable.IsLevelUpPossible(CurrentLevel);
+        }
+
+        private Scrolls ApplyScrolls(Scrolls collectedScrolls, Scrolls rewards)
+        {
+            collectedScrolls = collectedScrolls + rewards;
+            RemainingExperience -= rewards.TotalExp;
+            LevelUp(rewards.TotalExp);
+            return collectedScrolls;
+        }
+
         private bool LevelUp(ulong expIncrease)
         {
             ExperienceGainedOnLevel += expIncrease;
@@ -210,13 +210,6 @@ namespace EnhancementCalculator.Services
             return new ResultMinimal(currentLevel, expToConvert);
         }
 
-        //private ulong CalculateExpFromScrolls(
-        //    int tenKkExpScrolls,
-        //    int fiftyKkExpScrolls,
-        //    int hundredKkExpScrolls)
-        //{
-        //    return (uint)tenKkExpScrolls * ScrollConstants.tenMillExp + (uint)fiftyKkExpScrolls * ScrollConstants.fiftyMillExp + (uint)hundredKkExpScrolls * ScrollConstants.hundredMillExp;
-        //}
         private ulong CalculateGainedExpOnLevel(int level, int gainedExpPercentage)
         {
             return (ulong)(ExperienceForLevelTable.ExperienceForLevel[(ushort)(level + 1)] * ((double)gainedExpPercentage / 100));
