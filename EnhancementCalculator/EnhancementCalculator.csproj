@@ -112,6 +112,15 @@
     <Compile Include="Constants\WeaponBaseStats.cs" />
     <Compile Include="Services\IResultFormatter.cs" />
     <Compile Include="Services\ResultFormatter.cs" />
+    <Compile Include="Services\Strategies\Antharas.cs" />
+    <Compile Include="Services\Strategies\Arena.cs" />
+    <Compile Include="Services\Strategies\Baium.cs" />
+    <Compile Include="Services\Strategies\DailyQuests.cs" />
+    <Compile Include="Services\Strategies\IStrategyParameter.cs" />
+    <Compile Include="Services\Strategies\IStrategy.cs" />
+    <Compile Include="Services\Strategies\IStrategyFactory.cs" />
+    <Compile Include="Services\Strategies\StrategyBase.cs" />
+    <Compile Include="Services\Strategies\Zaken.cs" />
     <Page Include="InstanceExpCalculator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

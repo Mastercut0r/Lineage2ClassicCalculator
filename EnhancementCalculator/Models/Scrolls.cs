@@ -3,7 +3,7 @@ using System;
 
 namespace EnhancementCalculator.Models
 {
-    class Scrolls : IScrolls
+    public class Scrolls : IScrolls
     {
         public int OneMillDailyScrolls { get; private set; }
         public int TenMillDailyScrolls { get; private set; }
