@@ -76,7 +76,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Constants\ArenaRewardPerLevelRange.cs" />
-    <Compile Include="Models\DailyQuests.cs" />
+    <Compile Include="Models\DailyQuestsProvider.cs" />
     <Compile Include="Constants\ScrollConstants.cs" />
     <Compile Include="Constants\InstanceExpPerLevelTable.cs" />
     <Compile Include="Constants\ExperienceForLevelTable.cs" />

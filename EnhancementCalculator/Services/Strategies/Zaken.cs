@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EnhancementCalculator.Constants;
 using EnhancementCalculator.Models;
 
 namespace EnhancementCalculator.Services.Strategies
 {
-    class Zaken : IStrategy
+    class Zaken : StrategyBase, IStrategy
     {
-        public (bool levelIncreased, int currentLevel, IScrolls collectedScrolls) Apply(int currentLevel, IScrolls collectedScrolls)
+        public void Apply(IStrategyParameter container)
         {
-            throw new NotImplementedException();
+            if (LevelUpPossible(container.CurrentLevel)) return;
+            if (InstanceExpPerLevelTable.ZakenExpPerLevelTable.ContainsKey(container.CurrentLevel)
+                && container.RemainingExperience > InstanceExpPerLevelTable.ZakenExpPerLevelTable[container.CurrentLevel].TotalExp)
+            {
+                var rewards = (Scrolls)InstanceExpPerLevelTable.ZakenExpPerLevelTable[container.CurrentLevel];
+                CalculateScrolls(container, rewards);
+            }
         }
     }
 }

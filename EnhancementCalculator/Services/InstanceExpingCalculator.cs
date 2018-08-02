@@ -11,7 +11,7 @@ namespace EnhancementCalculator.Services
         private ulong ExperienceGainedOnLevel { get; set; }
         private int CurrentLevel { get; set; }
         private IClanArena m_ClanArena;
-        private IDailyQuests m_DailyQuests;
+        private IDailyQuestsProvider m_DailyQuests;
 
         /// <summary>
         /// Calculates all relevant data and puts them in a container
@@ -43,13 +43,13 @@ namespace EnhancementCalculator.Services
             bool isDailyQuest = false,
             int instanceEntranceFee = 0,
             IClanArena clanArena = null,
-            IDailyQuests dailyQuests = null)
+            IDailyQuestsProvider dailyQuests = null)
         {
             if (startLevel > targetLevel) return null;
             ulong totalExperience = CalculateTotalExp(startLevel, targetLevel, gainedExpPercentage);
             if (!isClanArena && !isBaium && !isZaken && !isAntharas && !isDailyQuest) return LevelingContainer.CreateExpContainer(totalExperience);
             m_ClanArena = clanArena ?? new ClanArena();
-            m_DailyQuests = dailyQuests ?? new DailyQuests();
+            m_DailyQuests = dailyQuests ?? new DailyQuestsProvider();
             var scrollContainer = CalculateExpScrollsNeeded
                 (
                 totalExperience,

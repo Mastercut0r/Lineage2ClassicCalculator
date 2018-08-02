@@ -9,6 +9,8 @@ namespace EnhancementCalculator.Services.Strategies
             bool baium,
             bool antharas,
             bool zaken,
-            bool dailyQuests);
+            bool dailyQuests,
+            int startBossStage,
+            int endBossStage);
     }
 }

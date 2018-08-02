@@ -33,7 +33,7 @@ namespace EnhancementCalculator.Services
             bool isDailyQuest = false,
             int instanceEntranceFee = 0,
             IClanArena clanArena = null,
-            IDailyQuests dailyQuests = null);
+            IDailyQuestsProvider dailyQuests = null);
 
         /// <summary>
         /// Converts the scrolls to level.

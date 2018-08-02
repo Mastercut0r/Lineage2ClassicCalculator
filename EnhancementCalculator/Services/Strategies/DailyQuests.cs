@@ -1,17 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EnhancementCalculator.Models;
+﻿using EnhancementCalculator.Models;
 
 namespace EnhancementCalculator.Services.Strategies
 {
-    class DailyQuests : IStrategy
+    class DailyQuests : StrategyBase, IStrategy
     {
-        public (bool levelIncreased, int currentLevel, IScrolls collectedScrolls) Apply(int currentLevel, IScrolls collectedScrolls)
+        private readonly IDailyQuestsProvider m_DailyQuests;
+        private readonly int m_Days;
+        public DailyQuests(IDailyQuestsProvider dailyQuests = null, int days = 7)
         {
-            throw new NotImplementedException();
+            m_DailyQuests = dailyQuests ?? new DailyQuestsProvider();
+            m_Days = days;
+        }
+
+        public void Apply(IStrategyParameter container)
+        {
+            if (LevelUpPossible(container.CurrentLevel)) return;
+            for (int day = 0; day < m_Days; day++)
+            {
+                var rewards = (Scrolls)m_DailyQuests.DailyReward(container.CurrentLevel);
+                if (container.RemainingExperience > rewards.TotalExp)
+                {
+                    CalculateScrolls(container, rewards);
+                }
+            }
         }
     }
 }
