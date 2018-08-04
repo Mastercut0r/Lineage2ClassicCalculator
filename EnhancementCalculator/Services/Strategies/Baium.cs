@@ -3,7 +3,7 @@ using EnhancementCalculator.Models;
 
 namespace EnhancementCalculator.Services.Strategies
 {
-    class Baium : StrategyBase, IStrategy
+    sealed class Baium : StrategyBase, IStrategy
     {
         public void Apply(IStrategyParameter container)
         {

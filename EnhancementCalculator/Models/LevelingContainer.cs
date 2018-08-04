@@ -1,12 +1,14 @@
 ﻿namespace EnhancementCalculator.Models
 {
-    public class LevelingContainer
+    public class LevelingContainer : ILevelingContainer
     {
         public ulong TotalExperience { get; set; }
-        public ulong RemainingExperience { get; private set; }
-        public int WeeklyCyclesNeeded { get; private set; }
-        public int ArenaRbKillCount { get; private set; }
-        public IScrolls CollectedScrolls { get; private set; }
+        public ulong RemainingExperience { get; set; }
+        public int WeeklyCyclesNeeded { get; set; }
+        public int ArenaRbKillCount { get; set; }
+        public IScrolls CollectedScrolls { get; set; }
+        public ulong ExperienceOnLevel { get; set; }
+        public int ResultLevel { get; set; }
 
         public LevelingContainer(
             ulong totalExperience, 
@@ -22,6 +24,7 @@
             ArenaRbKillCount = arenaRbKillCount;
             CollectedScrolls = collectedScrolls;
         }
+        public LevelingContainer() { };
         public static LevelingContainer CreateExpContainer(ulong totalExperience)
         {
             return new LevelingContainer(totalExperience, totalExperience, 0, 0, Scrolls.CreateEmptyContainer());

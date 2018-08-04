@@ -2,7 +2,7 @@
 
 namespace EnhancementCalculator.Services.Strategies
 {
-    class DailyQuests : StrategyBase, IStrategy
+    sealed class DailyQuests : StrategyBase, IStrategy
     {
         private readonly IDailyQuestsProvider m_DailyQuests;
         private readonly int m_Days;

@@ -3,7 +3,7 @@ using EnhancementCalculator.Models;
 
 namespace EnhancementCalculator.Services.Strategies
 {
-    class Zaken : StrategyBase, IStrategy
+    sealed class Zaken : StrategyBase, IStrategy
     {
         public void Apply(IStrategyParameter container)
         {

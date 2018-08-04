@@ -1,4 +1,5 @@
 ﻿using EnhancementCalculator.Models;
+using EnhancementCalculator.Services.Strategies;
 
 namespace EnhancementCalculator.Services
 {
@@ -18,7 +19,7 @@ namespace EnhancementCalculator.Services
         /// <param name="isAntharas">if set to <c>true</c> [is antharas].</param>
         /// <param name="isDailyQuest">if set to <c>true</c> [is DailyQuest].</param>
         /// <param name="instanceEntranceFee">The instance entrance fee.</param>
-        /// <param name="clanArena">The clan arena. For unit testing purposes</param>
+        /// <param name="strategyFactory">The strategyFactory. For unit testing purposes</param>
         /// <returns>LevelingContainer.</returns>
         LevelingContainer CalculateExping(
             int startLevel,
@@ -32,8 +33,7 @@ namespace EnhancementCalculator.Services
             bool isAntharas = false,
             bool isDailyQuest = false,
             int instanceEntranceFee = 0,
-            IClanArena clanArena = null,
-            IDailyQuestsProvider dailyQuests = null);
+            IStrategyFactory strategyFactory = null);
 
         /// <summary>
         /// Converts the scrolls to level.

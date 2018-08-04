@@ -3,7 +3,7 @@ using EnhancementCalculator.Models;
 
 namespace EnhancementCalculator.Services.Strategies
 {
-    class Antharas : StrategyBase, IStrategy
+    sealed class Antharas : StrategyBase, IStrategy
     {
         public void Apply(IStrategyParameter container)
         {

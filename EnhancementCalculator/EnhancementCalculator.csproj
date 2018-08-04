@@ -83,6 +83,7 @@
     <Compile Include="Constants\WeaponsTable.cs" />
     <Compile Include="Constants\WeaponClass.cs" />
     <Compile Include="Models\IDailyQuests.cs" />
+    <Compile Include="Models\ILevelingContainer.cs" />
     <Compile Include="Models\ResultMinimal.cs" />
     <Compile Include="Models\Scrolls.cs" />
     <Compile Include="Models\ClanArena.cs" />
@@ -120,6 +121,7 @@
     <Compile Include="Services\Strategies\IStrategy.cs" />
     <Compile Include="Services\Strategies\IStrategyFactory.cs" />
     <Compile Include="Services\Strategies\StrategyBase.cs" />
+    <Compile Include="Services\Strategies\StrategyFactory.cs" />
     <Compile Include="Services\Strategies\Zaken.cs" />
     <Page Include="InstanceExpCalculator.xaml">
       <SubType>Designer</SubType>

@@ -1,5 +1,8 @@
 ﻿using EnhancementCalculator.Constants;
 using EnhancementCalculator.Models;
+using EnhancementCalculator.Services.Strategies;
+using System;
+using System.Collections.Generic;
 
 namespace EnhancementCalculator.Services
 {
@@ -10,8 +13,7 @@ namespace EnhancementCalculator.Services
         private ulong RemainingExperience { get; set; }
         private ulong ExperienceGainedOnLevel { get; set; }
         private int CurrentLevel { get; set; }
-        private IClanArena m_ClanArena;
-        private IDailyQuestsProvider m_DailyQuests;
+        private IStrategyFactory m_StrategyFactory;
 
         /// <summary>
         /// Calculates all relevant data and puts them in a container
@@ -27,10 +29,9 @@ namespace EnhancementCalculator.Services
         /// <param name="isAntharas">if set to <c>true</c> [is antharas].</param>
         /// <param name="isDailyQuest">if set to <c>true</c> [is DailyQuest].</param>
         /// <param name="instanceEntranceFee">The instance entrance fee.</param>
-        /// <param name="clanArena">The clan arena.</param>
-        /// <param name="dailyQuests">The daily Quests.</param>
+        /// <param name="strategyFactory">The strategyFactory. For unit testing purposes</param>
         /// <returns>returns data container if arguments are valid. Otherwise returns light weight container with total experience only</returns>
-        public LevelingContainer CalculateExping(
+        public ILevelingContainer CalculateExping(
             int startLevel,
             int targetLevel,
             int gainedExpPercentage,
@@ -42,33 +43,42 @@ namespace EnhancementCalculator.Services
             bool isAntharas = false,
             bool isDailyQuest = false,
             int instanceEntranceFee = 0,
-            IClanArena clanArena = null,
-            IDailyQuestsProvider dailyQuests = null)
+            IStrategyFactory factory = null)
         {
             if (startLevel > targetLevel) return null;
-            ulong totalExperience = CalculateTotalExp(startLevel, targetLevel, gainedExpPercentage);
-            if (!isClanArena && !isBaium && !isZaken && !isAntharas && !isDailyQuest) return LevelingContainer.CreateExpContainer(totalExperience);
-            m_ClanArena = clanArena ?? new ClanArena();
-            m_DailyQuests = dailyQuests ?? new DailyQuestsProvider();
-            var scrollContainer = CalculateExpScrollsNeeded
-                (
-                totalExperience,
-                startLevel,
+            var strategyFactory = factory ?? new StrategyFactory();
+            IReadOnlyCollection<IStrategy> strategies = strategyFactory.CreateStrategies(
                 isClanArena,
                 isBaium,
-                isZaken,
                 isAntharas,
+                isZaken,
                 isDailyQuest,
                 startBossStage,
                 endBossStage);
+            ulong totalExperience = CalculateTotalExp(startLevel, targetLevel, gainedExpPercentage);
+            if (strategies.Count == 0) return LevelingContainer.CreateExpContainer(totalExperience);
+            return ApplyStrategies(
+                strategies);
 
-            return new LevelingContainer(
-                totalExperience,
-                RemainingExperience,
-                WeeklyCyclesNeeded,
-                ArenaRbKillCount,
-                scrollContainer);
+
+            //return new LevelingContainer(
+            //    totalExperience,
+            //    RemainingExperience,
+            //    WeeklyCyclesNeeded,
+            //    ArenaRbKillCount,
+            //    scrollContainer);
         }
+
+        private ILevelingContainer ApplyStrategies(IReadOnlyCollection<IStrategy> strategies)
+        {
+            ILevelingContainer container = new LevelingContainer();
+            foreach (var strategy in strategies)
+            {
+                strategy.Apply(container)
+            }
+            return container;
+        }
+
         private ulong CalculateTotalExp(int startLevel, int targetLevel, int gainedExpPercentage)
         {
             if (startLevel >= targetLevel)

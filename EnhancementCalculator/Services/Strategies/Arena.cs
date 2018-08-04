@@ -2,7 +2,7 @@
 
 namespace EnhancementCalculator.Services.Strategies
 {
-    class Arena : StrategyBase, IStrategy
+    sealed class Arena : StrategyBase, IStrategy
     {
         private readonly IClanArena m_ClanArena;
         private readonly int m_StartBossStage;
