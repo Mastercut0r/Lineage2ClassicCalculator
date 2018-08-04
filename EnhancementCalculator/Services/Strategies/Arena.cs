@@ -15,14 +15,14 @@ namespace EnhancementCalculator.Services.Strategies
             m_EndBossStage = endBossStage;
         }
 
-        public void Apply(IStrategyParameter container)
+        public void Apply(ILevelingContainer container)
         {
-            if (LevelUpPossible(container.CurrentLevel)) return;
+            if (!LevelUpPossible(container.CurrentLevel)) return;
             var rewards = (Scrolls)m_ClanArena.Reward(container.CurrentLevel, m_StartBossStage, m_EndBossStage);
             if (container.RemainingExperience > rewards.TotalExp)
             {
                 //ArenaRbKillCount += endBossStage - startBossStage;
-                CalculateScrolls(container, rewards);
+                ApplyScrolls(container, rewards);
             }
         }
     }

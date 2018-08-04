@@ -4,12 +4,12 @@ namespace EnhancementCalculator.Services
 {
     public interface IResultFormatter
     {
-        string ScrollsCount(LevelingContainer result);
-        string ScrollPrices(LevelingContainer result);
-        string TotalExperience(LevelingContainer result);
-        string WeeksCount(LevelingContainer result);
-        string RemainingExperience(LevelingContainer result);
-        string MoneyTotal(LevelingContainer result);
+        string ScrollsCount(ILevelingContainer result);
+        string ScrollPrices(ILevelingContainer result);
+        string TotalExperience(ILevelingContainer result);
+        string WeeksCount(ILevelingContainer result);
+        string RemainingExperience(ILevelingContainer result);
+        string MoneyTotal(ILevelingContainer result);
         string Experience(ulong result);
     }
 }

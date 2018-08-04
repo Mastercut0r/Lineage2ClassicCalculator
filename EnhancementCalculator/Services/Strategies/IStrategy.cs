@@ -4,6 +4,6 @@ namespace EnhancementCalculator.Services.Strategies
 {
     public interface IStrategy
     {
-        void Apply(IStrategyParameter container);
+        void Apply(ILevelingContainer container);
     }
 }

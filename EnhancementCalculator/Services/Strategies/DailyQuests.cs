@@ -12,15 +12,15 @@ namespace EnhancementCalculator.Services.Strategies
             m_Days = days;
         }
 
-        public void Apply(IStrategyParameter container)
+        public void Apply(ILevelingContainer container)
         {
-            if (LevelUpPossible(container.CurrentLevel)) return;
+            if (!LevelUpPossible(container.CurrentLevel)) return;
             for (int day = 0; day < m_Days; day++)
             {
                 var rewards = (Scrolls)m_DailyQuests.DailyReward(container.CurrentLevel);
                 if (container.RemainingExperience > rewards.TotalExp)
                 {
-                    CalculateScrolls(container, rewards);
+                    ApplyScrolls(container, rewards);
                 }
             }
         }

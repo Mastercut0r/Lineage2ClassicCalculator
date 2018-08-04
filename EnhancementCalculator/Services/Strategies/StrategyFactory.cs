@@ -18,19 +18,19 @@ namespace EnhancementCalculator.Services.Strategies
             {
                 strategies.Add(new Arena(startBossStage, endBossStage));
             }
-            else if (baium)
+            if (baium)
             {
                 strategies.Add(new Baium());
             }
-            else if (antharas)
+            if (antharas)
             {
                 strategies.Add(new Antharas());
             }
-            else if (zaken)
+            if (zaken)
             {
                 strategies.Add(new Zaken());
             }
-            else if (dailyQuests)
+            if (dailyQuests)
             {
                 strategies.Add(new DailyQuests());
             }

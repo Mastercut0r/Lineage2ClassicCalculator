@@ -5,14 +5,14 @@ namespace EnhancementCalculator.Services.Strategies
 {
     sealed class Baium : StrategyBase, IStrategy
     {
-        public void Apply(IStrategyParameter container)
+        public void Apply(ILevelingContainer container)
         {
-            if (LevelUpPossible(container.CurrentLevel)) return;
+            if (!LevelUpPossible(container.CurrentLevel)) return;
             if (InstanceExpPerLevelTable.BaiumExpPerLevelTable.ContainsKey(container.CurrentLevel)
                 && container.RemainingExperience > InstanceExpPerLevelTable.BaiumExpPerLevelTable[container.CurrentLevel].TotalExp)
             {
                 var rewards = (Scrolls)InstanceExpPerLevelTable.BaiumExpPerLevelTable[container.CurrentLevel];
-                CalculateScrolls(container, rewards);
+                ApplyScrolls(container, rewards);
             }
         }
     }

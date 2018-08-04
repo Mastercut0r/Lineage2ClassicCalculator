@@ -21,7 +21,7 @@ namespace EnhancementCalculator.Services
         /// <param name="instanceEntranceFee">The instance entrance fee.</param>
         /// <param name="strategyFactory">The strategyFactory. For unit testing purposes</param>
         /// <returns>LevelingContainer.</returns>
-        LevelingContainer CalculateExping(
+        ILevelingContainer CalculateExping(
             int startLevel,
             int targetLevel,
             int gainedExpPercentage,

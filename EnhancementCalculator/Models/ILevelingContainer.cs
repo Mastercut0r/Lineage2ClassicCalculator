@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EnhancementCalculator.Models
+﻿namespace EnhancementCalculator.Models
 {
     public interface ILevelingContainer
     {
@@ -12,7 +6,7 @@ namespace EnhancementCalculator.Models
         ulong RemainingExperience { get; set; }
         ulong ExperienceOnLevel { get; set; }
         int WeeklyCyclesNeeded { get; set; }
-        int ResultLevel { get; set; }
+        int CurrentLevel { get; set; }
         int ArenaRbKillCount { get; set; }
         IScrolls CollectedScrolls { get; set; }
     }

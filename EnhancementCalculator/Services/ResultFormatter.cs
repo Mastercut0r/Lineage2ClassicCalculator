@@ -7,17 +7,17 @@ namespace EnhancementCalculator.Services
 {
     public class ResultFormatter : IResultFormatter
     {
-        public string MoneyTotal(LevelingContainer result)
+        public string MoneyTotal(ILevelingContainer result)
         {
             return $"{string.Format("{0,9:N0}", result?.CollectedScrolls.TotalMoney)} Aden";
         }
 
-        public string RemainingExperience(LevelingContainer result)
+        public string RemainingExperience(ILevelingContainer result)
         {
             return string.Format("{0,9:N0}", result?.RemainingExperience);        
         }
 
-        public string ScrollPrices(LevelingContainer result)
+        public string ScrollPrices(ILevelingContainer result)
         {
             StringBuilder scrollPrices = new StringBuilder();
             string delimeter = ", ";
@@ -44,7 +44,7 @@ namespace EnhancementCalculator.Services
             return scrollPrices.ToString();
         }
 
-        public string ScrollsCount(LevelingContainer result)
+        public string ScrollsCount(ILevelingContainer result)
         {
             StringBuilder scrollPrices = new StringBuilder();
             string delimeter = ", ";
@@ -78,12 +78,12 @@ namespace EnhancementCalculator.Services
             return string.Format("{0,9:N0}", result);
         }
 
-        public string TotalExperience(LevelingContainer result)
+        public string TotalExperience(ILevelingContainer result)
         {
             return string.Format("{0,9:N0}", result?.TotalExperience);
         }
 
-        public string WeeksCount(LevelingContainer result)
+        public string WeeksCount(ILevelingContainer result)
         {
             return string.Format("{0,9:N0}", result?.WeeklyCyclesNeeded);
         }
