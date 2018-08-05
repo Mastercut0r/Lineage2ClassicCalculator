@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EnhancementCalculator.Models;
 
-namespace EnhancementCalculator.Models
+namespace EnhancementCalculator.Services
 {
     public interface IDailyQuestsProvider
     {

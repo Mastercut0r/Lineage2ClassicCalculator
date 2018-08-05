@@ -1,4 +1,6 @@
-﻿namespace EnhancementCalculator.Models
+﻿using EnhancementCalculator.Models;
+
+namespace EnhancementCalculator.Services
 {
     public interface IClanArena
     {

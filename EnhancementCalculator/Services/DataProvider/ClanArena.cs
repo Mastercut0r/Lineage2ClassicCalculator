@@ -1,6 +1,7 @@
 ﻿using EnhancementCalculator.Constants;
+using EnhancementCalculator.Models;
 
-namespace EnhancementCalculator.Models
+namespace EnhancementCalculator.Services
 {
     class ClanArena : IClanArena
     {
