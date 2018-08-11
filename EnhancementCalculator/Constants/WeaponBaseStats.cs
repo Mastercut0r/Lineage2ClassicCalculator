@@ -28,6 +28,8 @@
 
         //Daggers
         public static (int patak, int matak) CursedMaingauche = (62, 42);
+        public static (int patak, int matak) Maingauche = (69, 47);
+        public static (int patak, int matak) MithrillDagger = (80, 54);
         public static (int patak, int matak) HellKnife = (122, 122);
         public static (int patak, int matak) CrystalDagger = (136, 83);
         public static (int patak, int matak) DemonDagger = (170, 99);

@@ -8,12 +8,6 @@ namespace EnhancementCalculator.Services
 {
     class InstanceExpingCalculator : IInstanceExpingCalculator
     {
-        //private int ArenaRbKillCount { get; set; }
-        //private int WeeklyCyclesNeeded { get; set; }
-        //private ulong RemainingExperience { get; set; }
-        //private ulong ExperienceGainedOnLevel { get; set; }
-        //private int CurrentLevel { get; set; }
-
         /// <summary>
         /// Calculates all relevant data and puts them in a container
         /// </summary>
@@ -98,108 +92,6 @@ namespace EnhancementCalculator.Services
             expNeeded -= (ulong)(ExperienceForLevelTable.ExperienceForLevel[(ushort)(startLevel + 1)] * ((double)gainedExpPercentage / 100));
             return expNeeded;
         }
-        //private IScrolls CalculateExpScrollsNeeded(
-        //    ulong totalExp,
-        //    int startLevel,
-        //    bool arena,
-        //    bool baium,
-        //    bool zaken,
-        //    bool antharas,
-        //    bool dailyQuest,
-        //    int startBossStage,
-        //    int endBossStage)
-        //{
-        //    CurrentLevel = startLevel;
-        //    Scrolls collectedScrolls = (Scrolls)Scrolls.CreateEmptyContainer();
-        //    RemainingExperience = totalExp;
-        //    WeeklyCyclesNeeded = 0;
-        //    bool calculationNeeded = true;
-        //    while (calculationNeeded)
-        //    {
-        //        if (!ExperienceForLevelTable.IsLevelUpPossible(CurrentLevel))
-        //            calculationNeeded = false;//ToDo check if correct!!
-        //        var tempExpMark = RemainingExperience;
-        //        WeeklyCyclesNeeded += 1;
-        //        if (Verify(dailyQuest))
-        //        {
-        //            for (int day = 0; day < 7; day++)
-        //            {
-        //                Scrolls rewards = (Scrolls)m_DailyQuests.DailyReward(CurrentLevel);
-        //                if (RemainingExperience > rewards.TotalExp)
-        //                {
-        //                    collectedScrolls = ApplyScrolls(collectedScrolls, rewards);
-        //                }
-        //            }
-        //        }
-        //        if (Verify(antharas))
-        //        {
-        //            if (InstanceExpPerLevelTable.AntharasExpPerLevelTable.ContainsKey(CurrentLevel)
-        //                && RemainingExperience > InstanceExpPerLevelTable.AntharasExpPerLevelTable[CurrentLevel].TotalExp)
-        //            {
-        //                Scrolls rewards = (Scrolls)InstanceExpPerLevelTable.AntharasExpPerLevelTable[CurrentLevel];
-        //                collectedScrolls = ApplyScrolls(collectedScrolls, rewards);
-        //            }
-        //        }
-        //        if (Verify(arena))
-        //        {
-        //            Scrolls rewards = (Scrolls)m_ClanArena.Reward(CurrentLevel, startBossStage, endBossStage);
-        //            if (RemainingExperience > rewards.TotalExp)
-        //            {
-        //                ArenaRbKillCount += endBossStage - startBossStage;
-        //                collectedScrolls = ApplyScrolls(collectedScrolls, rewards);
-        //            }
-        //        }
-        //        if (Verify(baium))
-        //        {
-        //            if (InstanceExpPerLevelTable.BaiumExpPerLevelTable.ContainsKey(CurrentLevel)
-        //                && RemainingExperience > InstanceExpPerLevelTable.BaiumExpPerLevelTable[CurrentLevel].TotalExp)
-        //            {
-        //                Scrolls rewards = (Scrolls)InstanceExpPerLevelTable.BaiumExpPerLevelTable[CurrentLevel];
-        //                collectedScrolls = ApplyScrolls(collectedScrolls, rewards);
-        //            }
-        //        }
-        //        if (Verify(zaken))
-        //        {
-        //            if (InstanceExpPerLevelTable.ZakenExpPerLevelTable.ContainsKey(CurrentLevel)
-        //                && RemainingExperience > InstanceExpPerLevelTable.ZakenExpPerLevelTable[CurrentLevel].TotalExp)
-        //            {
-        //                Scrolls rewards = (Scrolls)InstanceExpPerLevelTable.ZakenExpPerLevelTable[CurrentLevel];
-        //                collectedScrolls = ApplyScrolls(collectedScrolls, rewards);
-        //            }
-        //        }
-        //        if (tempExpMark - RemainingExperience == 0)
-        //        {
-        //            calculationNeeded = false;
-        //            WeeklyCyclesNeeded -= 1;
-        //        }
-        //    }
-        //    return collectedScrolls;
-        //}
-
-        //private bool Verify(bool instance)
-        //{
-        //    return instance && ExperienceForLevelTable.IsLevelUpPossible(CurrentLevel);
-        //}
-
-        //private Scrolls ApplyScrolls(Scrolls collectedScrolls, Scrolls rewards)
-        //{
-        //    collectedScrolls = collectedScrolls + rewards;
-        //    RemainingExperience -= rewards.TotalExp;
-        //    LevelUp(rewards.TotalExp);
-        //    return collectedScrolls;
-        //}
-
-        //private bool LevelUp(ulong expIncrease)
-        //{
-        //    ExperienceGainedOnLevel += expIncrease;
-        //    if (ExperienceGainedOnLevel >= ExperienceForLevelTable.ExperienceForLevel[CurrentLevel + 1])
-        //    {
-        //        CurrentLevel += 1;
-        //        ExperienceGainedOnLevel -= ExperienceForLevelTable.ExperienceForLevel[CurrentLevel];
-        //        return true;
-        //    }
-        //    return false;
-        //}
 
         public ICalculationResultMinimal ConvertScrollsToLevel(
             int startLevel,

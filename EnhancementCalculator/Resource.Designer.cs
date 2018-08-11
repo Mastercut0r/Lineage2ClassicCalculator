@@ -493,11 +493,29 @@ namespace EnhancementCalculator {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Дага.
+        /// </summary>
+        internal static string Maingauche {
+            get {
+                return ResourceManager.GetString("Maingauche", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Мастер Инферно.
         /// </summary>
         internal static string MasterInferno {
             get {
                 return ResourceManager.GetString("MasterInferno", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Мифриловый Кинжал.
+        /// </summary>
+        internal static string MithrillDagger {
+            get {
+                return ResourceManager.GetString("MithrillDagger", resourceCulture);
             }
         }
         

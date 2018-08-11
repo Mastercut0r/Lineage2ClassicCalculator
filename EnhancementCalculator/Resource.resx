@@ -339,4 +339,10 @@
   <data name="Tarbar" xml:space="preserve">
     <value>Тарбар</value>
   </data>
+  <data name="Maingauche" xml:space="preserve">
+    <value>Дага</value>
+  </data>
+  <data name="MithrillDagger" xml:space="preserve">
+    <value>Мифриловый Кинжал</value>
+  </data>
 </root>

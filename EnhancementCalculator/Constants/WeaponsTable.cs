@@ -66,6 +66,8 @@ namespace EnhancementCalculator.Constants
         private static Dictionary<string, IWeapon> Daggers = new Dictionary<string, IWeapon>()
         {
             {Resource.CursedMaingauche, new Weapon(Resource.CursedMaingauche, WeaponType.PhysicalWeapon, WeaponClass.Daggers, WeaponBaseStats.CursedMaingauche)},
+            {Resource.Maingauche, new Weapon(Resource.Maingauche, WeaponType.PhysicalWeapon, WeaponClass.Daggers, WeaponBaseStats.Maingauche)},
+            {Resource.MithrillDagger, new Weapon(Resource.MithrillDagger, WeaponType.PhysicalWeapon, WeaponClass.Daggers, WeaponBaseStats.MithrillDagger)},
             {Resource.HellKnife, new Weapon(Resource.HellKnife, WeaponType.MageWeapon, WeaponClass.Daggers, WeaponBaseStats.HellKnife)},
             {Resource.CrystalDagger, new Weapon(Resource.CrystalDagger, WeaponType.PhysicalWeapon, WeaponClass.Daggers, WeaponBaseStats.CrystalDagger)},
             {Resource.DemonDagger, new Weapon(Resource.DemonDagger, WeaponType.PhysicalWeapon, WeaponClass.Daggers, WeaponBaseStats.DemonDagger)},
