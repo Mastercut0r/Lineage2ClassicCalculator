@@ -7,9 +7,9 @@ namespace EnhancementCalculator.Services
 {
     public class ResultFormatter : IResultFormatter
     {
-        public string MoneyTotal(ILevelingContainer result)
+        public string MoneyTotal(IScrolls result)
         {
-            return $"{string.Format("{0,9:N0}", result?.CollectedScrolls.TotalMoney)} Aden";
+            return $"{string.Format("{0,9:N0}", result.TotalMoney)} Aden";
         }
 
         public string RemainingExperience(ILevelingContainer result)

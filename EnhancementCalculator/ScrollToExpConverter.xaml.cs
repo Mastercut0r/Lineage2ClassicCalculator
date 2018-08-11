@@ -57,6 +57,18 @@ namespace EnhancementCalculator
 
 
 
+        public string MoneyTotal
+        {
+            get { return (string)GetValue(MoneyTotalProperty); }
+            set { SetValue(MoneyTotalProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TotalMoney.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty MoneyTotalProperty =
+            DependencyProperty.Register("MoneyTotal", typeof(string), typeof(ScrollToExpConverter), new PropertyMetadata(string.Empty));
+
+
+
 
         public ScrollToExpConverter()
         {
@@ -95,6 +107,7 @@ namespace EnhancementCalculator
             ResultLevel =  result.ResultLevel.ToString();
             ExperienceOnLevelPercentage =  $"{result.GainedExpPercentageOnLevel.ToString()}%";
             TotalExpToConvert = m_ResultFormatter.Experience(scrolls.TotalExp);
+            MoneyTotal = m_ResultFormatter.MoneyTotal(scrolls);
         }
     }
 }

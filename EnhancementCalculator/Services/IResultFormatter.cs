@@ -9,7 +9,7 @@ namespace EnhancementCalculator.Services
         string TotalExperience(ILevelingContainer result);
         string WeeksCount(ILevelingContainer result);
         string RemainingExperience(ILevelingContainer result);
-        string MoneyTotal(ILevelingContainer result);
+        string MoneyTotal(IScrolls result);
         string Experience(ulong result);
     }
 }

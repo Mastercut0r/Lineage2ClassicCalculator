@@ -210,7 +210,7 @@ namespace EnhancementCalculator
                 TotalExperience = m_ResultFormatter.TotalExperience(result);
                 WeeksCount = m_ResultFormatter.WeeksCount(result);
                 RemainingExperience = m_ResultFormatter.RemainingExperience(result);
-                MoneyTotal = m_ResultFormatter.MoneyTotal(result);
+                MoneyTotal = m_ResultFormatter.MoneyTotal(result.CollectedScrolls);
         }
 
         private void btCalculate_Click(object sender, RoutedEventArgs e)

@@ -37,6 +37,10 @@
                 <Label Content="Result experience on lvl:" FontSize="14"/>
                 <Label Margin="0,0,10,0" FontWeight="Bold" FontSize="14" Content="{Binding ExperienceOnLevelPercentage}"/>
             </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" DockPanel.Dock="Top">
+                <Label Content="Money total:" FontSize="14" />
+                <Label Margin="5,0,10,0" FontWeight="Bold" FontSize="14" Content="{Binding MoneyTotal}"/>
+            </StackPanel>
         </DockPanel>
     </Grid>
 </UserControl>
