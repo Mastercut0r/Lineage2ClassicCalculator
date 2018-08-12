@@ -4,6 +4,7 @@ namespace EnhancementCalculator.Services
 {
     public static class Enhancer
     {
+        private const double ssBonus = 0.3;
         public static (int patack, int matack) EnhanceItem(int basePatak, int baseMatak, int enhancementLevel, WeaponClass weaponType)
         {
             int finalPatack = basePatak;
@@ -23,6 +24,11 @@ namespace EnhancementCalculator.Services
                 finalMatack += enhancementLevel * enhancementBonus.matack;
             }
             return (finalPatack, finalMatack);
+        }
+
+        public static double CalculateSsBonus(int enhancementLevel)
+        {
+            return enhancementLevel * ssBonus;
         }
 
         private static (int patack, int matack) GetEnhancementBonus(WeaponClass weaponType)

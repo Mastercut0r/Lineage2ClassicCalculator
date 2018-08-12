@@ -35,6 +35,8 @@ namespace EnhancementCalculator.Models
             get;
         }
 
+        public double SsBonus { get; private set; }
+
         public Weapon(string weaponName, WeaponType weaponType, WeaponClass weaponClass, (int patack, int matack) baseStats)
         {
             WeaponName = weaponName;
@@ -47,6 +49,7 @@ namespace EnhancementCalculator.Models
         public (int patack, int matack) EnhanceWeapon(int enhancementLevel)
         {
             FinalStats = Enhancer.EnhanceItem(BaseStats.patack, BaseStats.matack, enhancementLevel, Class);
+            SsBonus = Enhancer.CalculateSsBonus(enhancementLevel);
             return FinalStats;
         }
     }

@@ -38,7 +38,12 @@ namespace EnhancementCalculator
                 WeapontypeBox.Items.Add(weaponType);
             }
         }
-
+        private string CalculateSsBonus()
+        {
+            var weapon = _itemsToEnhance[EnhancedItemsBox.SelectedValue.ToString()];
+            weapon.EnhanceWeapon(Convert.ToUInt16(EnhancementLevelBox.SelectedValue));
+            return $"SS Bonus: {weapon.SsBonus}%";
+        }
         private string RecalculateStats()
         {
             var weapon = _itemsToEnhance[EnhancedItemsBox.SelectedValue.ToString()];
@@ -51,6 +56,7 @@ namespace EnhancementCalculator
             if (EnhancedItemsBox.SelectedValue!=null)
             {
                 TotalPhysicalStatText.Content = RecalculateStats();
+                SsBonusText.Content = CalculateSsBonus();
             }
         }
 
@@ -59,6 +65,7 @@ namespace EnhancementCalculator
             if (EnhancedItemsBox.SelectedValue != null)
             {
                 TotalPhysicalStatText.Content = RecalculateStats();
+                SsBonusText.Content = CalculateSsBonus();
             }
         }
 

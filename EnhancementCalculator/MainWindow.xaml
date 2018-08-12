@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EnhancementCalculator"
         mc:Ignorable="d"
-        MinHeight="285" MinWidth="730" Height="521.547"  Width="730">
+        MinHeight="285" MinWidth="850" Height="521.547"  Width="850">
     <TabControl>
         <TabItem Header="Weapon Enhancements Calculator">
             <DockPanel VerticalAlignment="Top">
