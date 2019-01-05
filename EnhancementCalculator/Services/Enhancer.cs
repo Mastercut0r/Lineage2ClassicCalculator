@@ -40,6 +40,7 @@ namespace EnhancementCalculator.Services
                 case WeaponClass.Daggers:
                 case WeaponClass.OnehandedSwords:
                 case WeaponClass.OnehandedBlunts:
+                case WeaponClass.Polearms:
                     patackBonus = 4;
                     matackBonus = 3;
                     break;
