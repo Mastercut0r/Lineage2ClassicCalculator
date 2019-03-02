@@ -20,7 +20,7 @@ namespace EnhancementCalculator.Constants
         };
         private static readonly Dictionary<string, IWeapon> TwohandedBlunts = new Dictionary<string, IWeapon>()
         {
-            {Resource.GiantsHammer, new Weapon(Resource.GiantsHammer, WeaponType.MageWeapon, WeaponClass.TwohandedBlunts, WeaponGrade.D, WeaponBaseStats.GiantsHammer)},
+            {Resource.GiantsHammer, new Weapon(Resource.GiantsHammer, WeaponType.PhysicalWeapon, WeaponClass.TwohandedBlunts, WeaponGrade.D, WeaponBaseStats.GiantsHammer)},
             {Resource.DemonStaff, new Weapon(Resource.DemonStaff, WeaponType.MageWeapon, WeaponClass.TwohandedBlunts, WeaponGrade.C, WeaponBaseStats.DemonStaff)},
             {Resource.StaffOfEvilSpirit, new Weapon(Resource.StaffOfEvilSpirit, WeaponType.MageWeapon, WeaponClass.TwohandedBlunts, WeaponGrade.B, WeaponBaseStats.StaffOfEvilSpirit)},
             {Resource.GnomeHammer, new Weapon(Resource.GnomeHammer, WeaponType.PhysicalWeapon, WeaponClass.TwohandedBlunts, WeaponGrade.C, WeaponBaseStats.GnomeHammer)},
