@@ -54,6 +54,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>EnhancementCalculator.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -76,6 +79,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Constants\ArenaRewardPerLevelRange.cs" />
+    <Compile Include="Constants\EnhancementScrolls\EnhancementScrollFactory.cs" />
+    <Compile Include="Constants\EnhancementScrolls\IEnhancementScroll.cs" />
+    <Compile Include="Constants\EnhancementScrolls\IEnhancementScrollFactory.cs" />
+    <Compile Include="Constants\EnhancementScrolls\ScrollEnhanceWeaponS.cs" />
+    <Compile Include="Models\WeaponGrade.cs" />
     <Compile Include="Services\DataProvider\DailyQuestsProvider.cs" />
     <Compile Include="Constants\ScrollConstants.cs" />
     <Compile Include="Constants\InstanceExpPerLevelTable.cs" />
@@ -143,7 +151,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Constants\EnhancementScrolls\ScrollEnhanceWeapon.cs" />
+    <Compile Include="Constants\EnhancementScrolls\ScrollEnhanceWeaponDCBA.cs" />
     <Compile Include="ItemEnhancer.xaml.cs">
       <DependentUpon>ItemEnhancer.xaml</DependentUpon>
     </Compile>

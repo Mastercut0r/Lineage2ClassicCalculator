@@ -345,4 +345,37 @@
   <data name="MithrillDagger" xml:space="preserve">
     <value>Мифриловый Кинжал</value>
   </data>
+  <data name="AngelSlayer" xml:space="preserve">
+    <value>Убийца Ангелов</value>
+  </data>
+  <data name="ArcanaMace" xml:space="preserve">
+    <value>Посох Тайн</value>
+  </data>
+  <data name="BasaltBattleHammer" xml:space="preserve">
+    <value>Базальтовый Боевой Молот</value>
+  </data>
+  <data name="DemonSplinter" xml:space="preserve">
+    <value>Демон Одиночка</value>
+  </data>
+  <data name="DraconicBow" xml:space="preserve">
+    <value>Лук Дракона</value>
+  </data>
+  <data name="DragonHunterAxe" xml:space="preserve">
+    <value>Топор Охотника на Драконов</value>
+  </data>
+  <data name="DualTallumDarkLegion" xml:space="preserve">
+    <value>Клинок Таллума*Темный Легион</value>
+  </data>
+  <data name="ForgottenBlade" xml:space="preserve">
+    <value>Забытый Клинок</value>
+  </data>
+  <data name="HeavensDivider" xml:space="preserve">
+    <value>Разделитель Небес</value>
+  </data>
+  <data name="ImperialStaff" xml:space="preserve">
+    <value>Имперский Посох</value>
+  </data>
+  <data name="SaintSpear" xml:space="preserve">
+    <value>Святое Копье</value>
+  </data>
 </root>
