@@ -24,7 +24,7 @@ namespace EnhancementCalculator.Services
         ILevelingContainer CalculateExping(
             int startLevel,
             int targetLevel,
-            int gainedExpPercentage,
+            double gainedExpPercentage,
             int startBossStage,
             int endBossStage,
             bool isClanArena = false,
@@ -44,7 +44,7 @@ namespace EnhancementCalculator.Services
         /// <returns>ICalculationResultMinimal.</returns>
         ICalculationResultMinimal ConvertScrollsToLevel(
             int startLevel,
-            int gainedExpPercentage,
+            double gainedExpPercentage,
             IScrolls scrolls);
     }
 }

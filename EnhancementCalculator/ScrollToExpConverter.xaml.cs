@@ -18,7 +18,16 @@ namespace EnhancementCalculator
         public int TenKkScrolls { get; set; }
         public int FiftyKkScrolls { get; set; }
         public int HundredKkScrolls { get; set; }
-        public int GainedExpPercentage { get; set; }
+        public double GainedExpPercent
+        {
+            get { return (double)GetValue(GainedExpPercentProperty); }
+            set { SetValue(GainedExpPercentProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for GainedExpPercent.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty GainedExpPercentProperty =
+            DependencyProperty.Register("GainedExpPercent", typeof(double), typeof(ScrollToExpConverter), new PropertyMetadata(0.0));
+
         private IExpingCalculatorFactory m_CalculatorFactory;
         private IResultFormatter m_ResultFormatter = new ResultFormatter();
 
@@ -102,7 +111,7 @@ namespace EnhancementCalculator
             var scrolls = new Scrolls(TenKkScrolls, FiftyKkScrolls, HundredKkScrolls);
             var result = expingCalculator.ConvertScrollsToLevel(
                 SelectedStartLevel,
-                GainedExpPercentage,
+                GainedExpPercent,
                 scrolls);
             ResultLevel =  result.ResultLevel.ToString();
             ExperienceOnLevelPercentage =  $"{result.GainedExpPercentageOnLevel.ToString()}%";

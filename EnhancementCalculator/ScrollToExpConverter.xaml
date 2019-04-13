@@ -3,6 +3,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:validation="clr-namespace:EnhancementCalculator.Validation"
+             xmlns:converter="clr-namespace:EnhancementCalculator.Converter"
              mc:Ignorable="d">
     <Grid>
         <DockPanel VerticalAlignment="Top">
@@ -13,9 +15,19 @@
             </StackPanel>
             <GroupBox Header="Gained Experience" DockPanel.Dock="Top">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center">
-                    <Slider Name="slidGainedExp" Maximum="100" TickPlacement="BottomRight" TickFrequency="1" MinWidth="300" IsSnapToTickEnabled="True" Value="{Binding GainedExpPercentage}"/>
-                    <TextBox Text="{Binding ElementName=slidGainedExp, Path=Value, UpdateSourceTrigger=PropertyChanged}" Width="40" TextAlignment="Center" Margin="5,0,0,0"/>
-                    <Label Content="%"/>
+                    <Slider Name="slidGainedExp" Maximum="100" TickPlacement="BottomRight" TickFrequency="1" MinWidth="300" IsSnapToTickEnabled="True" Value="{Binding GainedExpPercent}"/>
+                    <TextBox Width="50" TextAlignment="Center" Margin="5,0,0,0">
+                        <TextBox.Text>
+                            <Binding Path="GainedExpPercent" StringFormat="N2">
+                                <Binding.ValidationRules>
+                                    <validation:ExperiencePercentage ValidationStep="RawProposedValue"/>
+                                </Binding.ValidationRules>
+                                <Binding.Converter>
+                                    <converter:PercentageSign/>
+                                </Binding.Converter>
+                            </Binding>
+                        </TextBox.Text>
+                     </TextBox>
                 </StackPanel>
             </GroupBox>
             <GroupBox Header="My Scrolls" DockPanel.Dock="Top">

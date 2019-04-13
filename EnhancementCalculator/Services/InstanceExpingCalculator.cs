@@ -27,7 +27,7 @@ namespace EnhancementCalculator.Services
         public ILevelingContainer CalculateExping(
             int startLevel,
             int targetLevel,
-            int gainedExpPercentage,
+            double gainedExpPercentage,
             int startBossStage,
             int endBossStage,
             bool isClanArena = false,
@@ -76,7 +76,7 @@ namespace EnhancementCalculator.Services
             return container;
         }
 
-        private ulong CalculateTotalExp(int startLevel, int targetLevel, int gainedExpPercentage)
+        private ulong CalculateTotalExp(int startLevel, int targetLevel, double gainedExpPercentage)
         {
             if (startLevel >= targetLevel)
                 return 0;
@@ -89,13 +89,13 @@ namespace EnhancementCalculator.Services
                     expNeeded += ExperienceForLevelTable.ExperienceForLevel[lvl];
                 }
             }
-            expNeeded -= (ulong)(ExperienceForLevelTable.ExperienceForLevel[(ushort)(startLevel + 1)] * ((double)gainedExpPercentage / 100));
+            expNeeded -= (ulong)(ExperienceForLevelTable.ExperienceForLevel[(ushort)(startLevel + 1)] * (gainedExpPercentage / 100));
             return expNeeded;
         }
 
         public ICalculationResultMinimal ConvertScrollsToLevel(
             int startLevel,
-            int gainedExpPercentage,
+            double gainedExpPercentage,
             IScrolls scrolls)
         {
             if (!ExperienceForLevelTable.IsLevelUpPossible(startLevel)) return new ResultMinimal(startLevel, 0);
@@ -115,9 +115,9 @@ namespace EnhancementCalculator.Services
             return new ResultMinimal(currentLevel, expToConvert);
         }
 
-        private ulong CalculateGainedExpOnLevel(int level, int gainedExpPercentage)
+        private ulong CalculateGainedExpOnLevel(int level, double gainedExpPercentage)
         {
-            return (ulong)(ExperienceForLevelTable.ExperienceForLevel[(ushort)(level + 1)] * ((double)gainedExpPercentage / 100));
+            return (ulong)(ExperienceForLevelTable.ExperienceForLevel[(ushort)(level + 1)] * (gainedExpPercentage / 100));
         }
     }
 }

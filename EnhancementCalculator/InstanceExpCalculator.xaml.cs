@@ -64,8 +64,17 @@ namespace EnhancementCalculator
         public List<int> ArenaStages { get; set; }
         public ObservableCollection<int> PossibleEndStages { get; set; }
 
+        public double GainedExpPercentage
+        {
+            get { return (double)GetValue(GainedExpPercentageProperty); }
+            set { SetValue(GainedExpPercentageProperty, value); }
+        }
 
-        public int GainedExpPercentage { get; set; }
+        // Using a DependencyProperty as the backing store for GainedExpPercentage.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty GainedExpPercentageProperty =
+            DependencyProperty.Register("GainedExpPercentage", typeof(double), typeof(InstanceExpCalculator), new PropertyMetadata(0.0));
+
+
         public string TotalExperience
         {
             get { return (string)GetValue(TotalExperienceProperty); }

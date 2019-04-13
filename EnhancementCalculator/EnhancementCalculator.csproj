@@ -83,6 +83,7 @@
     <Compile Include="Constants\EnhancementScrolls\IEnhancementScroll.cs" />
     <Compile Include="Constants\EnhancementScrolls\IEnhancementScrollFactory.cs" />
     <Compile Include="Constants\EnhancementScrolls\ScrollEnhanceWeaponS.cs" />
+    <Compile Include="Converter\PercentageSign.cs" />
     <Compile Include="Models\WeaponGrade.cs" />
     <Compile Include="Services\DataProvider\DailyQuestsProvider.cs" />
     <Compile Include="Constants\ScrollConstants.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="Services\Strategies\StrategyBase.cs" />
     <Compile Include="Services\Strategies\StrategyFactory.cs" />
     <Compile Include="Services\Strategies\Zaken.cs" />
+    <Compile Include="Validation\ExperiencePercentage.cs" />
     <Page Include="InstanceExpCalculator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
