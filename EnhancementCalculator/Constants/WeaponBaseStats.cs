@@ -43,6 +43,7 @@
         //Fists
         public static (int patak, int matak) SpikedJamadhar = (112, 54);
         public static (int patak, int matak) GreatPata = (190, 83);
+        public static (int patak, int matak) ArthroNail = (213, 91);
         public static (int patak, int matak) BellionsCestus = (236, 99);
         public static (int patak, int matak) DragonGrinder = (282, 114);
         public static (int patak, int matak) SobbeksTempest = (305, 121);

@@ -378,4 +378,7 @@
   <data name="SaintSpear" xml:space="preserve">
     <value>Святое Копье</value>
   </data>
+  <data name="ArthroNail" xml:space="preserve">
+    <value>Коготь Артро</value>
+  </data>
 </root>

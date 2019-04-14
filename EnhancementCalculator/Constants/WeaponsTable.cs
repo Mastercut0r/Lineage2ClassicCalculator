@@ -85,10 +85,12 @@ namespace EnhancementCalculator.Constants
         {
             {Resource.SpikedJamadhar, new Weapon(Resource.SpikedJamadhar, WeaponType.PhysicalWeapon, WeaponClass.Fists, WeaponGrade.D, WeaponBaseStats.SpikedJamadhar)},
             {Resource.GreatPata, new Weapon(Resource.GreatPata, WeaponType.PhysicalWeapon, WeaponClass.Fists, WeaponGrade.C, WeaponBaseStats.GreatPata)},
+            {Resource.ArthroNail, new Weapon(Resource.ArthroNail, WeaponType.PhysicalWeapon, WeaponClass.Fists, WeaponGrade.B, WeaponBaseStats.ArthroNail)},
             {Resource.BellionsCestus, new Weapon(Resource.BellionsCestus, WeaponType.PhysicalWeapon, WeaponClass.Fists, WeaponGrade.B, WeaponBaseStats.BellionsCestus)},
             {Resource.DragonGrinder, new Weapon(Resource.DragonGrinder, WeaponType.PhysicalWeapon, WeaponClass.Fists, WeaponGrade.A, WeaponBaseStats.DragonGrinder)},
             {Resource.SobbeksTempest, new Weapon(Resource.SobbeksTempest, WeaponType.PhysicalWeapon, WeaponClass.Fists, WeaponGrade.A, WeaponBaseStats.SobbeksTempest)},
             {Resource.DemonSplinter, new Weapon(Resource.DemonSplinter, WeaponType.PhysicalWeapon, WeaponClass.Fists, WeaponGrade.S, WeaponBaseStats.DemonSplinter)},
+
         };
         private static readonly Dictionary<string, IWeapon> Bows = new Dictionary<string, IWeapon>()
         {
